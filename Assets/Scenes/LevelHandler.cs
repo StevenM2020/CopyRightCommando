@@ -1,37 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class LevelHandler : MonoBehaviour
 {
     float levelTimer;
-    bool timeStar;
-    bool enemyStar;
-    bool bossStar;
-   
-    // Start is called before the first frame update
-    void Start()
+    int level;
+    bool blnTimeStar;
+    bool blnEnemyStar;
+    bool blnBossStar;
+ 
+
+
+void Start()
     {
-        
+        //Connect with Ethan on what level the user selects, deppending on the level they select that will be the int level variable.
     }
 
-    // Update is called once per frame
     void Update()
     {
         levelTimer += Time.deltaTime;
 
         if(levelTimer <= 200)
         {
-            timeStar = true;
+            blnTimeStar = true;
         }
         else
         {
-            timeStar = false;
+            blnTimeStar = false;
         }
-        //Checks the time, if the level was completed in under 2 minutes, player gets the time star.
 
-        //Check to see if any enemy entities are still alive. If there are no enemies then enemyStar = true;
+        if(GameObject.FindGameObjectsWithTag("Enemy") == null)
+        {
+                blnEnemyStar = true;
+        }
+ 
+        if(GameObject.FindGameObjectWithTag("Boss") == null)
+        {
+            blnBossStar = true;
+        }
+        //This will determine what stars the user gets for the current level.
+    }
 
-        //Check to see if boss is still alive. If the boss is no longer alive then bossStar = true;
+    void WriteString()
+    {
+        string path = "Assets/Resources/LevelData.txt";
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(level.ToString());
+        writer.WriteLine(blnTimeStar.ToString());
+        writer.WriteLine(blnEnemyStar.ToString());
+        writer.WriteLine(blnTimeStar.ToString());
+        writer.Close();
+    //This saves the stars for the levels
     }
 }
