@@ -20,7 +20,7 @@ public class FieldOfView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
+        playerRef = GameObject.Find("Player");
         StartCoroutine(FOVRoutine());
     }
     private IEnumerator FOVRoutine()
@@ -64,6 +64,28 @@ public class FieldOfView : MonoBehaviour
         {
             canSeePlayer=false;
         }
+    } 
+    public bool IsFacingPlayer(float newRadius)
+    {
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, newRadius, targetMask);
+            Transform target = rangeChecks[0].transform;
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
+            if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            {
+                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
     }
     // Update is called once per frame
     void Update()

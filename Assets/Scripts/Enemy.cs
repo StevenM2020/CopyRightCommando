@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    enum state { normal, search, attack };
+    enum EnemyState { normal, alert, attack };
+    EnemyState enemyState = EnemyState.normal;
     // Start is called before the first frame update
     void Start()
     {
