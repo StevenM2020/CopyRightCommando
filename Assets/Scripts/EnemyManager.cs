@@ -16,12 +16,13 @@ public class EnemyManager : MonoBehaviour
 
     }
 
-    public void alertEnemies()
+    public void alertEnemies(int floor)
     {
         Debug.Log("player got seen");
         if (GameObject.FindGameObjectsWithTag("Enemy") != null)
             foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
             {
+                if(enemy.GetComponent<EnemyAI>().floor == floor)
                 enemy.GetComponent<EnemyAI>().attackMode();
             }
     }

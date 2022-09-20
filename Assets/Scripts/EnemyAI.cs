@@ -11,8 +11,8 @@ public class EnemyAI : MonoBehaviour
     Vector3 target;
     enum EnemyState { normal, alert, attack, dead };
     EnemyState enemyState = EnemyState.normal;
-    private int floor;
-    private float playerShootDistance = 2;
+    public int floor = 0;
+    private float playerShootDistance = 30;
     private float playerShootSpeed = 1;
     private float moveSpeed = 3.5f;
 
@@ -20,6 +20,14 @@ public class EnemyAI : MonoBehaviour
     private EnemyManager enemyManager;
     private FieldOfView fov;
     private GameObject player;
+
+
+    public GameObject bullet;
+    private float fltBulletSpeed = 100;
+    private float shootDelay = .2f;
+    private bool shot = false;
+    private int accuracyOffSet = 10;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -43,9 +51,11 @@ public class EnemyAI : MonoBehaviour
                 }
                 break;
             case EnemyState.attack:
-                if (Vector3.Distance(transform.position, target) < playerShootDistance)
+                if (Vector3.Distance(transform.position, target) < playerShootDistance && fov.IsFacingPlayer(playerShootDistance))
                 {
                     GetComponent<NavMeshAgent>().speed = 0;
+                    if (!shot)
+                        StartCoroutine(shoot());
                 }
                 else
                 {
@@ -57,7 +67,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (fov.canSeePlayer && enemyState != EnemyState.attack)
         {
-            enemyManager.alertEnemies();
+            enemyManager.alertEnemies(floor);
         }
     }
     
@@ -88,7 +98,7 @@ public class EnemyAI : MonoBehaviour
         if(collision.transform.tag == "paper")
         {
             if (fov.IsFacingPlayer(100)){
-                enemyManager.alertEnemies();
+                enemyManager.alertEnemies(floor);
             }
             else
             {
@@ -96,5 +106,15 @@ public class EnemyAI : MonoBehaviour
                 target = player.transform.position;
             }
         }
+    }
+
+    private IEnumerator shoot()
+    {
+        System.Random rnd = new System.Random();
+        GameObject newBullet = Instantiate(bullet, transform.position, new Quaternion((float)rnd.Next(-accuracyOffSet, accuracyOffSet)/100, transform.rotation.y, (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100, transform.rotation.w));
+        newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * fltBulletSpeed;
+        shot = true;
+        yield return new WaitForSeconds(shootDelay);
+        shot = false;
     }
 }
