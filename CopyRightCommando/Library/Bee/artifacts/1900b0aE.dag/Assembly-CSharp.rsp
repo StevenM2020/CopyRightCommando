@@ -323,7 +323,7 @@
 "Assets/Ethan's Code/CameraController.cs"
 "Assets/Ethan's Code/Crouch.cs"
 "Assets/Ethan's Code/MoveCamera.cs"
-"Assets/Ethan's Code/PlayerMovement.cs"
+"Assets/Ethan's Code/PlayerInteraction.cs"
 -langversion:8.0
 
 /deterministic

@@ -664,6 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae2a5cd9de68614d99a544a2ace33af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crouchSpeed: 2
   ceilingCheck: {fileID: 582685771}
   ceilingDistance: 0.5
   whatIsCeiling:
@@ -674,6 +675,7 @@ MonoBehaviour:
   slideSpeed: 1.5
   slideLimit: 2
   slideWaitTime: 1
+  noUncrouch: 0
   isSliding: 0
   crouchKey: 306
 --- !u!1 &1435389848
