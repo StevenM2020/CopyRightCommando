@@ -1,3 +1,7 @@
+//Script:       FieldOfView
+//Author:       Steven Motz
+//Date:         9/20/2022
+//Purpose:      This script looks for the player
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

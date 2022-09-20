@@ -1,3 +1,7 @@
+//Script:       EnemyManager
+//Author:       Steven Motz
+//Date:         9/20/2022
+//Purpose:      This script shares information between the enemies.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

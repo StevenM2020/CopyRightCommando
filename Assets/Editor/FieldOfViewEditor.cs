@@ -1,3 +1,7 @@
+//Script:       FieldOfViewEditor
+//Author:       Steven Motz
+//Date:         9/20/2022
+//Purpose:      This script shows the enemies field of view and is only active in the editor
 using UnityEditor;
 using UnityEngine;
 
