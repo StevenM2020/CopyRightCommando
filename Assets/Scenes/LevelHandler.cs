@@ -15,7 +15,7 @@ public class LevelHandler : MonoBehaviour
 
 void Start()
     {
-        //Connect with Ethan on what level the user selects, deppending on the level they select that will be the int level variable.
+        level = 1;
     }
 
     void Update()
@@ -47,11 +47,13 @@ void Start()
     {
         string path = "Assets/Resources/LevelData.txt";
         StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine(level.ToString());
-        writer.WriteLine(blnTimeStar.ToString());
-        writer.WriteLine(blnEnemyStar.ToString());
+        writer.Write(level.ToString() + ",");
+        writer.Write(blnTimeStar.ToString() + ",");
+        writer.Write(blnEnemyStar.ToString() + ",");
         writer.WriteLine(blnTimeStar.ToString());
         writer.Close();
     //This saves the stars for the levels
+    //Figure out how to overwrite level data for when players replay levels.
+    //Look into Json Objects for a possible alt way of programming this, same with arrays.
     }
 }
