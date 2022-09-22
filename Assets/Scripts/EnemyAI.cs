@@ -59,7 +59,7 @@ public class EnemyAI : MonoBehaviour
                     }
                     break;
                 case EnemyState.attack:
-                    if (Vector3.Distance(new Vector3(transform.position.x,0, transform.position.z), new Vector3(target.x, 0, target.z)) < playerShootDistance ) // start shooting if in range
+                    if (Vector3.Distance(new Vector3(transform.position.x,0, transform.position.z), new Vector3(player.transform.position.x, 0, player.transform.position.z)) < playerShootDistance ) // start shooting if in range
                     {
                         if (fov.IsFacingPlayer(playerShootDistance)) // shoot if line of sight
                         {
@@ -76,11 +76,14 @@ public class EnemyAI : MonoBehaviour
                         }
                         else
                         {
-                            Vector3 newDirection = new Vector3(player.transform.position.x, 0, player.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
-                            Quaternion targetRotation = Quaternion.LookRotation(newDirection);
-                            Quaternion lookAt = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * lookSpeed);
-                            transform.rotation = lookAt;
+                            agent.SetDestination(player.transform.position);
                         }
+                      
+                            Vector3 newDirection1 = new Vector3(player.transform.position.x, 0, player.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
+                            Quaternion targetRotation1 = Quaternion.LookRotation(newDirection1);
+                            Quaternion lookAt1 = Quaternion.RotateTowards(transform.rotation, targetRotation1, Time.deltaTime * lookSpeed);
+                            transform.rotation = lookAt1;
+                        
                     }
                     else // move to player
                     {
@@ -92,7 +95,7 @@ public class EnemyAI : MonoBehaviour
                     break;
 
             }
-            if (fov.canSeePlayer && enemyState != EnemyState.attack)
+            if (fov.canSeePlayer)
             {
                 enemyManager.alertEnemies(floor);
             }
@@ -153,5 +156,10 @@ public class EnemyAI : MonoBehaviour
         shot = true;
         yield return new WaitForSeconds(shootDelay);
         shot = false;
+    }
+    public void normalMode()
+    {
+        enemyState = EnemyState.normal;
+        UpdateDestination();
     }
 }
