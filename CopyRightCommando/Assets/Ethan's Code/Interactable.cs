@@ -6,6 +6,7 @@ public class Interactable : MonoBehaviour
 {
 
     public UnityEvent onInteract;
+    public Sprite interaction;
     public int ID;
     // Start is called before the first frame update
     void Start()

@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Drag")]
     public float groundDrag = 6f;
     public float airDrag = 0f;
-    bool gravCheck;
+    
 
     [Header("Keykinds")]
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundMask;
     bool isGrounded;
-    float groundDistance = 0.4f;
+    public float groundDistance = 0.4f;
 
     Vector3 moveDirection;
     Vector3 slopeMoveDirection;

@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Interactor : MonoBehaviour
 {
     public LayerMask interactableLayer;
-    public Interactable interactable;
+    Interactable interactable;
+    public Image interactImage;
+    public Sprite defaultIcon;
+    public Sprite defaultInteraction;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +28,27 @@ public class Interactor : MonoBehaviour
               if(interactable == null || interactable.ID != hit.collider.GetComponent<Interactable>().ID)
                 {
                     interactable = hit.collider.GetComponent<Interactable>();
-                    
+                }
+              if(interactable.interaction != null)
+                {
+                    interactImage.sprite = interactable.interaction;
+                }
+                else
+                {
+                    interactImage.sprite = defaultInteraction;
                 }
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     interactable.onInteract.Invoke();
                 }
+            }
+        }
+        else
+        {
+            if(interactImage.sprite != defaultIcon)
+            {
+                interactImage.sprite = defaultIcon;
+                Debug.Log("default");
             }
         }
     }
