@@ -24,9 +24,10 @@ public class EnemyAI : MonoBehaviour
     private EnemyManager enemyManager;
     private FieldOfView fov;
     private GameObject player;
-
+    private float lookSpeed = 20;
 
     public GameObject bullet;
+    public GameObject gun;
     private float fltBulletSpeed = 100;
     public float shootDelay = .2f;
     private bool shot = false;
@@ -58,17 +59,36 @@ public class EnemyAI : MonoBehaviour
                     }
                     break;
                 case EnemyState.attack:
-                    if (Vector3.Distance(transform.position, target) < playerShootDistance && fov.IsFacingPlayer(playerShootDistance)) // start shooting if in range and line of sight
+                    if (Vector3.Distance(new Vector3(transform.position.x,0, transform.position.z), new Vector3(target.x, 0, target.z)) < playerShootDistance ) // start shooting if in range
                     {
-                        GetComponent<NavMeshAgent>().speed = 0;
-                        if (!shot)
-                            StartCoroutine(shoot());
+                        if (fov.IsFacingPlayer(playerShootDistance)) // shoot if line of sight
+                        {
+                            // GetComponent<NavMeshAgent>().speed = 0; // stop running
+                            agent.SetDestination(transform.position);
+
+                            Vector3 newDirection = player.transform.position - gun.transform.position;
+                            Quaternion targetRotation = Quaternion.LookRotation(newDirection);
+                            Quaternion lookAt = Quaternion.RotateTowards(gun.transform.rotation, targetRotation, Time.deltaTime * lookSpeed);
+                            gun.transform.rotation = lookAt;
+
+                            if (!shot)
+                                StartCoroutine(shoot());
+                        }
+                        else
+                        {
+                            Vector3 newDirection = new Vector3(player.transform.position.x, 0, player.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
+                            Quaternion targetRotation = Quaternion.LookRotation(newDirection);
+                            Quaternion lookAt = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * lookSpeed);
+                            transform.rotation = lookAt;
+                        }
                     }
                     else // move to player
                     {
-                        GetComponent<NavMeshAgent>().speed = moveSpeed;
+                        //GetComponent<NavMeshAgent>().speed = moveSpeed;
+                        agent.SetDestination(player.transform.position);
                     }
-                    target = player.transform.position;
+                    //target = player.transform.position;
+                    //agent.SetDestination(target);
                     break;
 
             }
@@ -128,7 +148,7 @@ public class EnemyAI : MonoBehaviour
     private IEnumerator shoot() // fire a bullet where enemy is looking
     {
         System.Random rnd = new System.Random();
-        GameObject newBullet = Instantiate(bullet, transform.position, new Quaternion((float)rnd.Next(-accuracyOffSet, accuracyOffSet)/100, transform.rotation.y, (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 50, transform.rotation.w));
+        GameObject newBullet = Instantiate(bullet, gun.transform.position, new Quaternion((float)rnd.Next( -accuracyOffSet, accuracyOffSet)/100 + gun.transform.rotation.x, gun.transform.rotation.y + (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100 , gun.transform.rotation.z, gun.transform.rotation.w));
         newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * fltBulletSpeed;
         shot = true;
         yield return new WaitForSeconds(shootDelay);

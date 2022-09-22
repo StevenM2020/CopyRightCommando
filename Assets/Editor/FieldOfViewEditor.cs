@@ -21,10 +21,14 @@ public class FieldOfViewEditor : Editor
         Handles.color = Color.yellow;
         Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngle01 * fov.radius);
         Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngle02 * fov.radius);
-
+        Handles.DrawLine(fov.transform.position, new Vector3(fov.transform.position.x, fov.playerRef.transform.position.y, fov.transform.position.z) + viewAngle02 * fov.radius);
+        Handles.DrawLine(fov.transform.position, new Vector3(fov.transform.position.x, fov.playerRef.transform.position.y, fov.transform.position.z) + viewAngle01 * fov.radius);
+        Handles.color = Color.blue;
+        Handles.DrawLine(fov.transform.position, fov.playerRef.transform.position);
         if (fov.canSeePlayer)
         {
             Handles.color = Color.green;
+            Handles.DrawLine(fov.transform.position, fov.playerRef.transform.position);
             Handles.DrawLine(fov.transform.position, fov.playerRef.transform.position);
         }
     }

@@ -40,44 +40,77 @@ public class FieldOfView : MonoBehaviour
 
     private void FieldOfViewCheck()
     {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
-        if(rangeChecks.Length != 0)
-        {
-            Transform target = rangeChecks[0].transform;
-            Vector3 directionToTarget = (target.position - transform.position).normalized;
-
-            if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+        try {
+            Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
+            if (rangeChecks.Length != 0)
             {
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
-                if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                Transform target = rangeChecks[0].transform;
+                Vector3 directionToTarget = (target.position - transform.position).normalized;
+
+                if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
                 {
-                    canSeePlayer = true;
+                    float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                    if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                    {
+                        canSeePlayer = true;
+                    }
+                    else
+                    {
+                        canSeePlayer = false;
+                    }
                 }
                 else
                 {
                     canSeePlayer = false;
                 }
+
             }
-            else
+            else if (canSeePlayer)
             {
                 canSeePlayer = false;
             }
-
         }
-        else if(canSeePlayer)
+        catch
         {
-            canSeePlayer=false;
+            Debug.Log("catch0");
         }
     } 
     public bool IsFacingPlayer(float newRadius)
     {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, newRadius, targetMask);
+        try
+        {
+            Collider[] rangeChecks = Physics.OverlapSphere(transform.position, newRadius, targetMask);
+            if (rangeChecks != null)
+            {
+                Transform target = rangeChecks[0].transform;
+                Vector3 directionToTarget = (target.position - transform.position).normalized;
+                if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+                {
+                    float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                    if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        catch
+        {
+            Debug.Log("catch1");
+        }
+        return false;
+    }
+    public bool IsFacingPlayer(float newRadius, float newAngle)
+    {
+        try
+        {
+            Collider[] rangeChecks = Physics.OverlapSphere(transform.position, newRadius, targetMask);
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
-            if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            if (Vector3.Angle(transform.forward, directionToTarget) < newAngle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
-                if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
                     return true;
                 }
@@ -90,6 +123,12 @@ public class FieldOfView : MonoBehaviour
             {
                 return false;
             }
+        }
+        catch
+        {
+            Debug.Log("catch2");
+            return false;
+        }
     }
     // Update is called once per frame
     void Update()
