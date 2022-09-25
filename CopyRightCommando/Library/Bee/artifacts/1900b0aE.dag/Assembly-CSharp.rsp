@@ -322,10 +322,12 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/Ethan's Code/CameraController.cs"
 "Assets/Ethan's Code/Crouch.cs"
+"Assets/Ethan's Code/HealthBar.cs"
 "Assets/Ethan's Code/Interactable.cs"
 "Assets/Ethan's Code/Interactor.cs"
 "Assets/Ethan's Code/MoveCamera.cs"
 "Assets/Ethan's Code/PHealth.cs"
+"Assets/Ethan's Code/PlayerHealthTest.cs"
 "Assets/Ethan's Code/PlayerMovement.cs"
 -langversion:8.0
 
