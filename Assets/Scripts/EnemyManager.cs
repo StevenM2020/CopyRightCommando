@@ -43,6 +43,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    // tells all enemies on the same floor to attack and sets a the timer
     public void alertEnemies(int floor)
     {
         if (!enemiesAttacking[floor])
