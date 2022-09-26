@@ -32,13 +32,12 @@ public class Gun : MonoBehaviour
 
     public void StartReload()
     {
-        if (gameObject.active)
-        {
+            if (gameObject.active)
             if (!gunData.reloading)
             {
                 StartCoroutine(Reload());
             }
-        }
+        
     }
 
     private IEnumerator Reload()
@@ -61,15 +60,14 @@ public class Gun : MonoBehaviour
                 Debug.Log("Shooting");
                 if (Physics.Raycast(muzzle.position, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance))
                 {
-                    if (hitInfo.transform.CompareTag("Enemy"))
-                    {
+                    
                         EnemyAI enemy = hitInfo.transform.GetComponent<EnemyAI>();
                         if (enemy != null)
                         {
                             enemy.health -= gunData.damage;
                             Debug.Log("Enemy Hit! " + hitInfo.transform.name + " " + enemy.health);
                         }
-                    }
+                    
                     
                 }
 

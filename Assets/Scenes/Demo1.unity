@@ -397,11 +397,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6847734931279132632, guid: 68cb4c2cae6ff1440a243c8cb216a07a, type: 3}
   m_PrefabInstance: {fileID: 1330564634}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &375273395 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 375273395, guid: aa68547cc3224c44f8dfb6dc73409c2a, type: 3}
-  m_PrefabInstance: {fileID: 1846093110}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &379634092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8258353473985743738, guid: d0dddf59ced2e124a888d90a4aee96fe, type: 3}
@@ -1142,11 +1137,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68cb4c2cae6ff1440a243c8cb216a07a, type: 3}
---- !u!1 &1333232116 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1333232116, guid: aa68547cc3224c44f8dfb6dc73409c2a, type: 3}
-  m_PrefabInstance: {fileID: 1846093110}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1335462244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,6 +1212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1582812375}
   - component: {fileID: 1582812374}
+  - component: {fileID: 1582812376}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1242,8 +1233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  gun1: {fileID: 1333232116}
-  gun2: {fileID: 375273395}
 --- !u!4 &1582812375
 Transform:
   m_ObjectHideFlags: 0
@@ -1258,6 +1247,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1582812376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582812373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad97c11f1bd8d4346880b142cab9e3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1643350384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,6 +1512,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 222725854, guid: aa68547cc3224c44f8dfb6dc73409c2a, type: 3}
+      propertyPath: m_Name
+      value: TempMuzzle1
+      objectReference: {fileID: 0}
     - target: {fileID: 5496303014324768365, guid: aa68547cc3224c44f8dfb6dc73409c2a, type: 3}
       propertyPath: interactImage
       value: 

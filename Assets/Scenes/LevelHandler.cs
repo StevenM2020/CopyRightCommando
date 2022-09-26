@@ -22,24 +22,25 @@ void Start()
     {
         levelTimer += Time.deltaTime;
 
-        if(levelTimer <= 200)
-        {
-            blnTimeStar = true;
-        }
-        else
-        {
-            blnTimeStar = false;
-        }
+        //if(levelTimer <= 200)
+        //{
+        //    blnTimeStar = true;
+       // }
+       // else
+       // {
+       //     blnTimeStar = false;
+       // }
 
         if(GameObject.FindGameObjectsWithTag("Enemy") == null)
         {
                 blnEnemyStar = true;
+            Debug.Log("One Star");
         }
  
-        if(GameObject.FindGameObjectWithTag("Boss") == null)
-        {
-            blnBossStar = true;
-        }
+       // if(GameObject.FindGameObjectWithTag("Boss") == null)
+      //  {
+         //   blnBossStar = true;
+        //}
         //This will determine what stars the user gets for the current level.
     }
 

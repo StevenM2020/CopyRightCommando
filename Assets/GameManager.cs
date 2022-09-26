@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     public PHealth player;
-    public GameObject gun1, gun2;
+    //public GameObject gun1, gun2;
     private void Awake()
     {
         if (instance == null)
@@ -22,15 +22,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player").GetComponent<PHealth>();
-        if(gun1.GetComponent<Gun>() == null)
-        {
-            gun1.AddComponent<Gun>();
+       // if(gun1.GetComponent<Gun>() == null)
+       // {
+      //      gun1.AddComponent<Gun>();
             //gun1.GetComponent<Gun>().gun = gun1;
-        }
-        if (gun2.GetComponent<Gun>() == null)
-        {
-            gun2.AddComponent<Gun>();
-        }
+       // }
+       // if (gun2.GetComponent<Gun>() == null)
+       // {
+       //     gun2.AddComponent<Gun>();
+        //}
     }
 
     private void Update()
