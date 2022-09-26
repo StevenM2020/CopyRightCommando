@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PHealth : MonoBehaviour
 {
     public int maxHealth = 100;
-    float currentHealth;
+    public float currentHealth;
 
     public HealthBar healthBar;
     public HealthBar healthBar2;

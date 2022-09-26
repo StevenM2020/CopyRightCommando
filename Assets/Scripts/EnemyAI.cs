@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour
 
     public GameObject bullet;
     public GameObject gun;
+    public float damage;
     private float fltBulletSpeed = 100;
     public float shootDelay = .2f;
     private bool shot = false;
@@ -42,6 +43,7 @@ public class EnemyAI : MonoBehaviour
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         fov = GetComponent<FieldOfView>();
         player = GameObject.Find("Player");
+ 
     }
 
     // Update is called once per frame
@@ -153,6 +155,7 @@ public class EnemyAI : MonoBehaviour
         System.Random rnd = new System.Random();
         GameObject newBullet = Instantiate(bullet, gun.transform.position, new Quaternion((float)rnd.Next( -accuracyOffSet, accuracyOffSet)/100 + gun.transform.rotation.x, gun.transform.rotation.y + (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100 , gun.transform.rotation.z, gun.transform.rotation.w));
         newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * fltBulletSpeed;
+        newBullet.GetComponent<TestBullet>().damage = damage;
         shot = true;
         yield return new WaitForSeconds(shootDelay);
         shot = false;

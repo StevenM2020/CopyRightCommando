@@ -12,11 +12,20 @@ public class TestBullet : MonoBehaviour
     {
         Destroy(gameObject, 1);
     }
-    private float damage;
-    private void OnCollisionEnter(Collision collision)
+    public float damage;
+    private void OnTriggerEnter(Collider collision)
     {
-        if(!(collision.gameObject.tag == "Enemy"))
-            Destroy(gameObject);
+        // if(!(collision.gameObject.tag == "Enemy"))
+        /// Destroy(gameObject);
+        PHealth player = collision.transform.GetComponent<PHealth>();
+
+        if(player != null)
+        {
+            player.TakeDamage(damage);
+        }
+
+        Destroy(gameObject);
+            
     }
     public float Damage()
     {

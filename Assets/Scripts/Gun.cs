@@ -8,23 +8,43 @@ public class Gun : MonoBehaviour
     public GunData gunData;
     [SerializeField] private Transform muzzle;
     float timeSinceLastShot;
+
+    //public Gun gun = null;
+    //private void Awake()
+    //{
+    //    Debug.Log("gun object is here");
+    //    if (gun == null)
+    //        gun = this;
+    //    else if (gun != this)
+    //        Destroy(gameObject);
+
+    //    DontDestroyOnLoad(gameObject);
+    //}
+
+
     private void Start()
     {
+        Debug.Log("gun object is starting");
         PlayerShoot.shootInput += Shoot;
         PlayerShoot.reloadInput += StartReload;
+        gunData.currentAmmoCount = gunData.magSize;
     }
 
     public void StartReload()
     {
-        if(!gunData.reloading)
+        if (gameObject.active)
         {
-            StartCoroutine(Reload());
+            if (!gunData.reloading)
+            {
+                StartCoroutine(Reload());
+            }
         }
     }
 
     private IEnumerator Reload()
     {
         gunData.reloading = true;
+        Debug.Log("Reloading");
         yield return new WaitForSeconds(gunData.reloadTime);
         gunData.currentAmmoCount = gunData.magSize;
         gunData.reloading = false;
@@ -35,11 +55,22 @@ public class Gun : MonoBehaviour
         //Debug.Log("Shot Gun!");
         if(gunData.currentAmmoCount > 0)
         {
+           
             if(CanShoot())
             {
+                Debug.Log("Shooting");
                 if (Physics.Raycast(muzzle.position, muzzle.forward, out RaycastHit hitInfo, gunData.maxDistance))
                 {
-                    Debug.Log(hitInfo.transform.name);
+                    if (hitInfo.transform.CompareTag("Enemy"))
+                    {
+                        EnemyAI enemy = hitInfo.transform.GetComponent<EnemyAI>();
+                        if (enemy != null)
+                        {
+                            enemy.health -= gunData.damage;
+                            Debug.Log("Enemy Hit! " + hitInfo.transform.name + " " + enemy.health);
+                        }
+                    }
+                    
                 }
 
                 gunData.currentAmmoCount--;
@@ -55,6 +86,12 @@ public class Gun : MonoBehaviour
         timeSinceLastShot += Time.deltaTime;
 
         Debug.DrawRay(muzzle.position, muzzle.forward);
+
+        Debug.Log(gunData);
+
+
+
+
     }
 
     private void OnGunShot()
