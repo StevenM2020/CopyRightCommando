@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class TestBullet : MonoBehaviour
 {
+    public bool blnShotByPlayer = false;
     private void Start()
     {
         Destroy(gameObject, 1);
@@ -17,19 +18,33 @@ public class TestBullet : MonoBehaviour
     {
         // if(!(collision.gameObject.tag == "Enemy"))
         /// Destroy(gameObject);
-        PHealth player = collision.transform.GetComponent<PHealth>();
-
-        if(player != null)
+        /// 
+        if (blnShotByPlayer )
         {
-            player.TakeDamage(damage);
+            if(collision.CompareTag("Enemy"))
+            collision.gameObject.GetComponent<EnemyAI>().Damage(damage);
+            if (collision.name != "Player")
+                Destroy(gameObject);
         }
+        else
+        {
+            if (collision.name == "Player")
+            {
+                PHealth player = collision.transform.GetComponent<PHealth>();
 
-        Destroy(gameObject);
+                if (player != null)
+                {
+                    player.TakeDamage(damage);
+                }
+            }
+            Destroy(gameObject);
+        }
+        
             
     }
     public float Damage()
     {
-        Destroy(gameObject, .1f);
+        Destroy(gameObject, .01f);
         return damage;
     }
 }
