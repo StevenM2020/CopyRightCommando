@@ -20,7 +20,6 @@ public class EnemyAI : MonoBehaviour
     public float playerShootSpeed = 1;
     private float moveSpeed = 3.5f;
 
-    // private GameObject enemyManager;
     private EnemyManager enemyManager;
     private FieldOfView fov;
     private GameObject player;
@@ -53,34 +52,35 @@ public class EnemyAI : MonoBehaviour
         {
             switch (enemyState)
             {
-                case EnemyState.normal:
+                case EnemyState.normal: // partrol to waypoints
                     if (Vector3.Distance(transform.position, target) < 1)
                     {
                         IterateWaypointIndex();
                         UpdateDestination();
                     }
                     break;
-                case EnemyState.attack:
+                case EnemyState.attack: // follow player and attack
                     if (Vector3.Distance(new Vector3(transform.position.x,0, transform.position.z), new Vector3(player.transform.position.x, 0, player.transform.position.z)) < playerShootDistance ) // start shooting if in range
                     {
                         if (fov.IsFacingPlayer(playerShootDistance)) // shoot if line of sight
                         {
-                            // GetComponent<NavMeshAgent>().speed = 0; // stop running
-                            agent.SetDestination(transform.position);
+                            agent.SetDestination(transform.position); // stop moveing
 
+                            // rotate gun to player
                             Vector3 newDirection = player.transform.position - gun.transform.position;
                             Quaternion targetRotation = Quaternion.LookRotation(newDirection);
                             Quaternion lookAt = Quaternion.RotateTowards(gun.transform.rotation, targetRotation, Time.deltaTime * lookSpeed);
                             gun.transform.rotation = lookAt;
 
-                            if (!shot)
+                            if (!shot) // shoot
                                 StartCoroutine(shoot());
                         }
                         else
                         {
-                            agent.SetDestination(player.transform.position);
+                            agent.SetDestination(player.transform.position); // move to player
                         }
                       
+                        // rotate enemy to player
                             Vector3 newDirection1 = new Vector3(player.transform.position.x, 0, player.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
                             Quaternion targetRotation1 = Quaternion.LookRotation(newDirection1);
                             Quaternion lookAt1 = Quaternion.RotateTowards(transform.rotation, targetRotation1, Time.deltaTime * lookSpeed);
@@ -89,20 +89,17 @@ public class EnemyAI : MonoBehaviour
                     }
                     else // move to player
                     {
-                        //GetComponent<NavMeshAgent>().speed = moveSpeed;
                         agent.SetDestination(player.transform.position);
                     }
-                    //target = player.transform.position;
-                    //agent.SetDestination(target);
                     break;
 
             }
-            if (fov.canSeePlayer)
+            if (fov.canSeePlayer) // alert to enemy manager if see player
             {
                 enemyManager.alertEnemies(floor);
             }
 
-            if (health <= 0)
+            if (health <= 0) // die
             {
                 enemyState = EnemyState.dead;
                 //start death animation
@@ -119,12 +116,12 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("attack mode enabled");
     }
     
-    void UpdateDestination()
+    void UpdateDestination() // updates the agent with waypoint
     {
         target = waypoints[waypointindex].position;
         agent.SetDestination(target);
     }
-    void IterateWaypointIndex()
+    void IterateWaypointIndex() // change to next waypoint
     {
         waypointindex++; 
         if(waypointindex == waypoints.Length)
@@ -177,9 +174,13 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(shootDelay);
         shot = false;
     }
-    public void normalMode()
+    public void normalMode() // back to patrolling
     {
         enemyState = EnemyState.normal;
         UpdateDestination();
+    }
+    public void DamageEnemy(float damage) 
+    {
+        health -= damage;
     }
 }

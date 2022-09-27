@@ -20,7 +20,6 @@ public class FieldOfView : MonoBehaviour
 
     public bool canSeePlayer;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +37,7 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
-    private void FieldOfViewCheck()
+    private void FieldOfViewCheck() // checks if the enemy can see the player in the default radius
     {
         try {
             Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
@@ -72,10 +71,10 @@ public class FieldOfView : MonoBehaviour
         }
         catch
         {
-            Debug.Log("catch0");
+            canSeePlayer = false;
         }
     } 
-    public bool IsFacingPlayer(float newRadius)
+    public bool IsFacingPlayer(float newRadius) // checks if the enemy can see the player in the custom radius
     {
         try
         {
@@ -96,11 +95,11 @@ public class FieldOfView : MonoBehaviour
         }
         catch
         {
-            Debug.Log("catch1");
+            return false;
         }
         return false;
     }
-    public bool IsFacingPlayer(float newRadius, float newAngle)
+    public bool IsFacingPlayer(float newRadius, float newAngle) // checks if the enemy can see the player in the custom radius and angle
     {
         try
         {
@@ -114,25 +113,12 @@ public class FieldOfView : MonoBehaviour
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
             }
         }
         catch
         {
-            Debug.Log("catch2");
             return false;
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return false;
     }
 }
