@@ -133,11 +133,29 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.transform.tag == "paper")
+    //    {
+    //        if (fov.IsFacingPlayer(100)){ // alert if looking at player
+    //            enemyManager.alertEnemies(floor);
+    //        }
+    //        else // move to shot
+    //        {
+    //            enemyState = EnemyState.alert;
+    //            target = player.transform.position;
+    //        }
+
+    //        health -= collision.gameObject.GetComponent<TestBullet>().Damage();
+    //    }
+    //}
+
+    public void Damage(float bulletDamage)
     {
-        if(collision.transform.tag == "paper")
-        {
-            if (fov.IsFacingPlayer(100)){ // alert if looking at player
+    
+        
+            if (fov.IsFacingPlayer(100))
+            { // alert if looking at player
                 enemyManager.alertEnemies(floor);
             }
             else // move to shot
@@ -145,9 +163,8 @@ public class EnemyAI : MonoBehaviour
                 enemyState = EnemyState.alert;
                 target = player.transform.position;
             }
-
-            health -= collision.gameObject.GetComponent<TestBullet>().Damage();
-        }
+        health -= bulletDamage;
+        
     }
 
     private IEnumerator shoot() // fire a bullet where enemy is looking

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     public PHealth player;
+    public GameObject weapon1, weapon2;
     //public GameObject gun1, gun2;
     private void Awake()
     {
