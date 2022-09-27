@@ -16,6 +16,11 @@ public class weaponPicker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(weapon1 == null || weapon2 == null)
+        {
+            weapon1 = GameManager.instance.weapon1;
+            weapon2 = GameManager.instance.weapon2;
+        }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             weapon1.SetActive(true);

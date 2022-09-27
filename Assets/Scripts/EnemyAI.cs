@@ -71,7 +71,7 @@ public class EnemyAI : MonoBehaviour
                             Quaternion targetRotation = Quaternion.LookRotation(newDirection);
                             Quaternion lookAt = Quaternion.RotateTowards(gun.transform.rotation, targetRotation, Time.deltaTime * lookSpeed);
                             gun.transform.rotation = lookAt;
-
+                            enemyManager.alertEnemies(floor);
                             if (!shot) // shoot
                                 StartCoroutine(shoot());
                         }
@@ -92,7 +92,11 @@ public class EnemyAI : MonoBehaviour
                         agent.SetDestination(player.transform.position);
                     }
                     break;
-
+                case EnemyState.alert:
+                   if (Vector3.Distance(transform.position, target) < 5)
+                        enemyState = EnemyState.normal;
+                    CancelInvoke("isAlert");
+                    break;
             }
             if (fov.canSeePlayer) // alert to enemy manager if see player
             {
@@ -103,7 +107,8 @@ public class EnemyAI : MonoBehaviour
             {
                 enemyState = EnemyState.dead;
                 //start death animation
-                Destroy(gameObject, 5f);
+                //Destroy(gameObject, 5f);
+                Destroy(gameObject);
             }
         }
     }
@@ -149,17 +154,20 @@ public class EnemyAI : MonoBehaviour
 
     public void Damage(float bulletDamage)
     {
-    
-        
-            if (fov.IsFacingPlayer(100))
-            { // alert if looking at player
-                enemyManager.alertEnemies(floor);
-            }
-            else // move to shot
-            {
-                enemyState = EnemyState.alert;
-                target = player.transform.position;
-            }
+
+
+        //if (fov.IsFacingPlayer(100))
+        //{ // alert if looking at player
+        //    enemyManager.alertEnemies(floor);
+        //}
+        //else // move to shot
+        //{
+        //    enemyState = EnemyState.alert;
+        //    target = new Vector3(player.transform.position.x, transform.position.y - 1, player.transform.position.z);
+        //    Invoke("isAlert", 10);
+        //Debug.Log("goToPlayer");
+        //}
+        enemyManager.alertEnemies(floor);
         health -= bulletDamage;
         
     }
@@ -182,5 +190,12 @@ public class EnemyAI : MonoBehaviour
     public void DamageEnemy(float damage) 
     {
         health -= damage;
+    }
+    public void isAlert()
+    {
+        if(enemyState == EnemyState.alert)
+        {
+            enemyState = EnemyState.normal;
+        }
     }
 }

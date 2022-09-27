@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public PHealth player;
     public GameObject weapon1, weapon2;
+    public string weaponName1, weaponName2;
     //public GameObject gun1, gun2;
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+        weapon2.SetActive(false);
         player = GameObject.Find("Player").GetComponent<PHealth>();
        // if(gun1.GetComponent<Gun>() == null)
        // {
@@ -38,12 +39,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if(weapon1 == null || weapon2 == null)
+        {
+            weapon1 = GameObject.Find(weaponName1);
+            weapon2 = GameObject.Find(weaponName2);
+            weapon2.SetActive(false);
+        }
         if (player == null)
             player = GameObject.Find("Player").GetComponent<PHealth>();
 
         if(player.currentHealth <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
         }
     }
 }
