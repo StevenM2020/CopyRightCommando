@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
         player = GameObject.Find("Player").GetComponent<PHealth>();
        // if(gun1.GetComponent<Gun>() == null)
        // {

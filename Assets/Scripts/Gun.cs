@@ -9,17 +9,17 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform muzzle;
     float timeSinceLastShot;
 
-    //public Gun gun = null;
-    //private void Awake()
-    //{
+    // Gun gun = null;
+   // private void Awake()
+   // {
     //    Debug.Log("gun object is here");
     //    if (gun == null)
-    //        gun = this;
-    //    else if (gun != this)
-    //        Destroy(gameObject);
+     //      gun = this;
+     //   else if (gun != this)
+     //      Destroy(gameObject);
 
-    //    DontDestroyOnLoad(gameObject);
-    //}
+   //     DontDestroyOnLoad(gameObject);
+   // }
 
 
     private void Start()

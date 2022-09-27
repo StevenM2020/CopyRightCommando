@@ -10,12 +10,17 @@ public class LevelHandler : MonoBehaviour
     bool blnTimeStar;
     bool blnEnemyStar;
     bool blnBossStar;
+   
  
 
 
 void Start()
     {
         level = 1;
+       for(int i = 0; i<3; i++)
+        {
+            Debug.Log(GameObject.FindGameObjectsWithTag("Enemy")[i]);
+        }
     }
 
     void Update()
@@ -25,16 +30,23 @@ void Start()
         //if(levelTimer <= 200)
         //{
         //    blnTimeStar = true;
-       // }
-       // else
-       // {
-       //     blnTimeStar = false;
-       // }
+        // }
+        // else
+        // {
+        //     blnTimeStar = false;
+        // }
 
-        if(GameObject.FindGameObjectsWithTag("Enemy") == null)
+        //Debug.Log(GameObject.FindGameObjectsWithTag("Enemy").GetLength(int i));
+
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
                 blnEnemyStar = true;
             Debug.Log("One Star");
+        }
+        else
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            Debug.Log(enemies.Length);
         }
  
        // if(GameObject.FindGameObjectWithTag("Boss") == null)
