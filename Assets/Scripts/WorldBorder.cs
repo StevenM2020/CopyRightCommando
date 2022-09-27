@@ -1,3 +1,7 @@
+//Script:       WorldBorder
+//Author:       Steven Motz
+//Date:         9/27/2022
+//Purpose:      This script kills the player when they leave the game or any objects
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

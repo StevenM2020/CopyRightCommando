@@ -1,3 +1,7 @@
+//Script:       GunScript
+//Author:       Steven Motz
+//Date:         9/27/2022
+//Purpose:      This script controls the players guns.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,7 +41,7 @@ public class GunScript : MonoBehaviour
             {
                 if (tmrShoot <= 0)
                 {
-                    if (Input.GetMouseButton(0))
+                    if (Input.GetMouseButton(0)) // shoot
                     {
                         GameObject newBullet = Instantiate(bullet, gameObject.transform.position, new Quaternion((float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100 + gameObject.transform.rotation.x, gameObject.transform.rotation.y + (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100, gameObject.transform.rotation.z, gameObject.transform.rotation.w));
                         newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * fltBulletSpeed;
@@ -52,7 +56,7 @@ public class GunScript : MonoBehaviour
                     tmrShoot -= Time.deltaTime;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R)) // reload
             {
                 blnReloading = true;
                 numOfBulletsLeft = numOfBullets;
