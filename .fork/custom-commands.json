@@ -1,0 +1,58 @@
+[
+  {
+    "name": "1 Hard Reset Command",
+    "target": "ref",
+    "refTargets": [
+      "localbranch"
+    ],
+    "ui": {
+      "title": "Hard Reset",
+      "description": "This will delete your last change. Are you sure you want to do this? If not ask Steven.",
+      "buttons": [
+        {
+          "title": "OK",
+          "action": {
+            "type": "sh",
+            "script": "echo $git reset --hard HEAD~1",
+            "showOutput": true,
+            "waitForExit": true
+          }
+        },
+        {
+          "title": "Cancel",
+          "action": {
+            "type": "cancel"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "1 Soft Reset",
+    "target": "ref",
+    "refTargets": [
+      "localbranch"
+    ],
+    "ui": {
+      "title": "Soft Reset",
+      "description": "This will uncommit your last change. Are you sure you want to do this? If not ask Steven.",
+      "buttons": [
+        {
+          "title": "OK",
+          "action": {
+            "type": "sh",
+            "script": "echo $git reset --soft HEAD~1",
+            "showOutput": true,
+            "waitForExit": true
+          }
+        },
+        {
+          "title": "Cancel",
+          "action": {
+            "type": "cancel"
+          }
+        }
+      ]
+    }
+  }
+]
