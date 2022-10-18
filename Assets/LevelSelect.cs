@@ -1,11 +1,18 @@
+//Script:       Level Select Script
+//Author:       Steven Motz
+//Date:         10/11/2022
+//Purpose:      This script controls the terminal and allows the player to select levels.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour
 {
     public TextMeshProUGUI terminal;
+    public Image missionImage;
+    public List<Sprite> missionImages = new List<Sprite>();
     private string currentCommand;
     private Dictionary<string, string> commands = new Dictionary<string, string> { 
         { "HELP", "shows commands" },
@@ -27,7 +34,7 @@ public class LevelSelect : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) // close terminal
         {
             gameObject.SetActive(false);
         }else if (Input.GetKeyDown(KeyCode.Return))
@@ -74,20 +81,22 @@ public class LevelSelect : MonoBehaviour
                     
 
                     break;
+
+                    // select levels
                 case "ae":
-                    levelSelected = 1;
+                    SelectLevel(1);
                     toTerminal("AE mission selected", 1);
                     break;
                 case "soni":
-                    levelSelected = 2;
+                    SelectLevel(2);
                     toTerminal("Soni mission selected", 1);
                     break;
                 case "nintenerd":
-                    levelSelected = 3;
+                    SelectLevel(3);
                     toTerminal("Nintenerd mission selected", 1);
                     break;
                 case "bisney":
-                    levelSelected = 4;
+                    SelectLevel(4);
                     toTerminal("Bisney mission selected", 1);
                     break;
                 default:
@@ -96,15 +105,20 @@ public class LevelSelect : MonoBehaviour
             }
             toTerminal("", 2);
             currentCommand = "";
-
         }
-        else if(Input.anyKey)
+        else if(Input.anyKey) // writes any keys to the terminal
         {
             terminal.text = terminal.text + Input.inputString;
             currentCommand = currentCommand+Input.inputString;
         }
     }
-    void toTerminal(string str, int num = 0)
+    void SelectLevel(int num) // changes image and int
+    {
+        levelSelected = num;
+        missionImage.gameObject.SetActive(true);
+        missionImage.sprite = missionImages[levelSelected - 1];
+    }
+    void toTerminal(string str, int num = 0) // writes to the termainal
     {
         switch (num)
         {
