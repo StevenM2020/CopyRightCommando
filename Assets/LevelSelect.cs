@@ -13,6 +13,7 @@ public class LevelSelect : MonoBehaviour
     public TextMeshProUGUI terminal;
     public Image missionImage;
     public List<Sprite> missionImages = new List<Sprite>();
+    public RawImage terminalRawImage;
     private string currentCommand;
     private Dictionary<string, string> commands = new Dictionary<string, string> { 
         { "HELP", "shows commands" },
@@ -24,6 +25,7 @@ public class LevelSelect : MonoBehaviour
         { "ARMORY HINT", "might help you get into the armory" } };
     private bool gun = false;
     private int levelSelected = 0;
+    private bool terminalOn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,83 +35,95 @@ public class LevelSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Escape)) // close terminal
+        if (terminalOn)
         {
-            gameObject.SetActive(false);
-        }else if (Input.GetKeyDown(KeyCode.Return))
-        {
-            terminal.text = terminal.text + "\n";
-            Debug.Log(currentCommand);
-            switch (currentCommand.ToLower().Trim())
+            if (Input.GetKeyDown(KeyCode.Escape)) // close terminal
             {
-                case "help":
-                    toTerminal(" List of available commands:", 1);
-                    foreach (KeyValuePair<string, string> command in commands)
-                    {
-                        toTerminal(command.Key + ": " + command.Value);
-                    }
-                    
-                    break;
-                case "start":
-                    if(gun)
-                    {
-                        switch (levelSelected)
+                terminalRawImage.enabled = false;
+                terminalOn = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.Return))
+            {
+                terminal.text = terminal.text + "\n";
+                Debug.Log(currentCommand);
+                switch (currentCommand.ToLower().Trim())
+                {
+                    case "help":
+                        toTerminal(" List of available commands:", 1);
+                        foreach (KeyValuePair<string, string> command in commands)
                         {
-
-                            case 1:
-                                // sent to AE
-                                break;
-                            case 2:
-                                // sent to SONI
-                                break;
-                            case 3:
-                                // sent to NINTENERD
-                                break;
-                            case 4:
-                                // sent to BISNEY
-                                break;
-                            default:
-                                toTerminal("No mission selected", 1);
-                                break;
+                            toTerminal(command.Key + ": " + command.Value);
                         }
-                    }
-                    else
-                    {
-                        toTerminal("You need to select a weapon from the armory", 1);
-                    }
-                    
 
-                    break;
+                        break;
+                    case "start":
+                        if (gun)
+                        {
+                            switch (levelSelected)
+                            {
+
+                                case 1:
+                                    // sent to AE
+                                    break;
+                                case 2:
+                                    // sent to SONI
+                                    break;
+                                case 3:
+                                    // sent to NINTENERD
+                                    break;
+                                case 4:
+                                    // sent to BISNEY
+                                    break;
+                                default:
+                                    toTerminal("No mission selected", 1);
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            toTerminal("You need to select a weapon from the armory", 1);
+                        }
+
+
+                        break;
 
                     // select levels
-                case "ae":
-                    SelectLevel(1);
-                    toTerminal("AE mission selected", 1);
-                    break;
-                case "soni":
-                    SelectLevel(2);
-                    toTerminal("Soni mission selected", 1);
-                    break;
-                case "nintenerd":
-                    SelectLevel(3);
-                    toTerminal("Nintenerd mission selected", 1);
-                    break;
-                case "bisney":
-                    SelectLevel(4);
-                    toTerminal("Bisney mission selected", 1);
-                    break;
-                default:
-                    toTerminal("Command not found", 1);
-                    break;
+                    case "ae":
+                        SelectLevel(1);
+                        toTerminal("AE mission selected", 1);
+                        break;
+                    case "soni":
+                        SelectLevel(2);
+                        toTerminal("Soni mission selected", 1);
+                        break;
+                    case "nintenerd":
+                        SelectLevel(3);
+                        toTerminal("Nintenerd mission selected", 1);
+                        break;
+                    case "bisney":
+                        SelectLevel(4);
+                        toTerminal("Bisney mission selected", 1);
+                        break;
+                    default:
+                        toTerminal("Command not found", 1);
+                        break;
+                }
+                toTerminal("", 2);
+                currentCommand = "";
             }
-            toTerminal("", 2);
-            currentCommand = "";
+            else if (Input.anyKey) // writes any keys to the terminal
+            {
+                terminal.text = terminal.text + Input.inputString;
+                currentCommand = currentCommand + Input.inputString;
+            }
         }
-        else if(Input.anyKey) // writes any keys to the terminal
+        else
         {
-            terminal.text = terminal.text + Input.inputString;
-            currentCommand = currentCommand+Input.inputString;
+            if (Input.GetKeyDown(KeyCode.Escape)) // close terminal
+            {
+                terminalRawImage.enabled = true;
+                terminalOn = true;
+            }
         }
     }
     void SelectLevel(int num) // changes image and int
