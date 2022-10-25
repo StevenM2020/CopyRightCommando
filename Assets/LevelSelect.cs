@@ -110,6 +110,13 @@ public class LevelSelect : MonoBehaviour
                 }
                 toTerminal("", 2);
                 currentCommand = "";
+            }else if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                if(currentCommand.Length > 0)
+                {
+                    currentCommand = currentCommand.Substring(0, currentCommand.Length - 1);
+                    terminal.text = terminal.text.Substring(0, terminal.text.Length - 1);
+                }
             }
             else if (Input.anyKey) // writes any keys to the terminal
             {
