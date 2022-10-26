@@ -57,7 +57,7 @@ public class LevelSelect : MonoBehaviour
 
                         break;
                     case "start":
-                        if (gun)
+                        if (GameObject.Find("WeaponStarManager").GetComponent<WeaponStarManager>().GetNumGunsSelected() > 0) // checks num guns
                         {
                             switch (levelSelected)
                             {
@@ -124,14 +124,19 @@ public class LevelSelect : MonoBehaviour
                 currentCommand = currentCommand + Input.inputString;
             }
         }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Escape)) // close terminal
-            {
-                terminalRawImage.enabled = true;
-                terminalOn = true;
-            }
-        }
+        //else
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Escape)) // close terminal
+        //    {
+        //        terminalRawImage.enabled = true;
+        //        terminalOn = true;
+        //    }
+        //}
+    }
+    public void OpenTerminal()
+    {
+        terminalRawImage.enabled = true;
+        terminalOn = true;
     }
     void SelectLevel(int num) // changes image and int
     {
