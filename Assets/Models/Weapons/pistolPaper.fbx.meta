@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: aa27cff3cc1922c4ea6b776e98e66903
+guid: 0c27a9b8d691ef44fbeda0e7a7710cbf
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 445e5293231befa48923a6f656b1eb55, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: controlsBlack
-    second: {fileID: 2100000, guid: 694ab7fedd3e29c49adef738fbce01ec, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: controlsDisplay
-    second: {fileID: 2100000, guid: 8c4d6bd736358ed4b8ab1a0bae6e35cf, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
