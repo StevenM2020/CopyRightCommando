@@ -107,6 +107,9 @@ public class LevelSelect : MonoBehaviour
                         SelectLevel(4);
                         toTerminal("Bisney mission selected", 1);
                         break;
+                    case "armory hint":
+                        toTerminal("Use the key pad at the end of the hall", 1);
+                        break;
                     default:
                         toTerminal("Command not found", 1);
                         break;
