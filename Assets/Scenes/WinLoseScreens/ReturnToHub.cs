@@ -7,6 +7,6 @@ public class ReturnToHub : MonoBehaviour
 {
    public void LoadHUB()
     {
-        SceneManager.LoadScene("Enter Hub world name here");
+        SceneManager.LoadScene("Hub");
     }
 }
