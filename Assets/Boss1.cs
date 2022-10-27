@@ -17,7 +17,7 @@ public class Boss1 : MonoBehaviour
     private GameObject player;
     int attackTime;
     private float fltBagSpeed = 40;
-
+    public GameObject spawnPoint;
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class Boss1 : MonoBehaviour
     {
         if(collision.gameObject.name == "TestBullet")
         {
-            boss1Health -= 5;
+   
         }
         if(collision.gameObject.name == "Player")
         {
@@ -35,11 +35,19 @@ public class Boss1 : MonoBehaviour
         }
             
     }
-
+    public void Damage(float damage)
+    {
+        boss1Health -= (int)damage;
+        if (boss1Health <= 0)
+        {
+            Debug.Log("dead enemy");
+            //send to win screne
+        }
+    }
     private void Update()
     {
         attackTime += 1;
-
+        transform.LookAt(player.transform);
        //if(attackPattern == 1)
        // {
        //     //This is where the boss will throw the money bags over head, like a catapult
@@ -56,8 +64,9 @@ public class Boss1 : MonoBehaviour
 
        if(attackTime % 50 == 0)
         {
+            Debug.Log("throw bag");
             GameObject newBag = Instantiate(bag);
-            newBag.transform.position = new Vector3(transform.position.x, transform.position.y - 2, transform.position.z);
+            newBag.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y - 2, spawnPoint.transform.position.z);
             newBag.transform.LookAt(new Vector3(player.transform.position.x, player.transform.position.y - 2, player.transform.position.z));
             newBag.GetComponent<Rigidbody>().velocity = newBag.transform.forward * fltBagSpeed;
 

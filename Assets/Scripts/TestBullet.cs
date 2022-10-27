@@ -35,6 +35,16 @@ public class TestBullet : MonoBehaviour
                     hit.transform.position = GameObject.Find("InteractImage").transform.position;
                     hit.GetComponent<DestroySelf>().DestroyObject(.2f);
                 }
+            }else if(collision.name == "BlueSuitFree01")
+            {
+                collision.gameObject.GetComponent<Boss1>().Damage(damage);
+                if (blnShotByPlayer)
+                {
+                    GameObject hit = Instantiate(hitMarker);
+                    hit.transform.parent = GameObject.Find("InteractImage").transform;
+                    hit.transform.position = GameObject.Find("InteractImage").transform.position;
+                    hit.GetComponent<DestroySelf>().DestroyObject(.2f);
+                }
             }
             else if (collision.name != "Player")
             {

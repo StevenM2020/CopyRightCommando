@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
@@ -67,6 +68,7 @@ public class LevelSelect : MonoBehaviour
 
                                 case 1:
                                     // sent to AE
+                                    SceneManager.LoadScene("Andy Dev Zone");
                                     break;
                                 case 2:
                                     // sent to SONI
