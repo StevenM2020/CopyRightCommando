@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class Boss1 : MonoBehaviour
 {
     public int boss1Health = 300;
@@ -18,7 +19,7 @@ public class Boss1 : MonoBehaviour
     int attackTime;
     private float fltBagSpeed = 40;
     public GameObject spawnPoint;
-
+    
     private void Start()
     {
         player = GameObject.Find("Player");   
@@ -41,6 +42,7 @@ public class Boss1 : MonoBehaviour
         if (boss1Health <= 0)
         {
             Debug.Log("dead enemy");
+            SceneManager.LoadScene("Win Screen");
             //send to win screne
         }
     }
