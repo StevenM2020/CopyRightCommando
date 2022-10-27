@@ -39,15 +39,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(weapon1 == null || weapon2 == null)
+        if (GameObject.Find("Player"))
         {
-            weapon1 = GameObject.Find(weaponName1);
-            weapon2 = GameObject.Find(weaponName2);
-            weapon2.SetActive(false);
+            if (weapon1 == null || weapon2 == null)
+            {
+                weapon1 = GameObject.Find(weaponName1);
+                weapon2 = GameObject.Find(weaponName2);
+                weapon2.SetActive(false);
+            }
+            if (player == null)
+                player = GameObject.Find("Player").GetComponent<PHealth>();
         }
-        if (player == null)
-            player = GameObject.Find("Player").GetComponent<PHealth>();
-
         if(player.currentHealth <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

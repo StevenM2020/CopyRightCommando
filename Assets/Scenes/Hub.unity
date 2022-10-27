@@ -6137,7 +6137,7 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Mission:
 
-        Start Mission'
+        Start Mission from terminal'
       objectReference: {fileID: 0}
     - target: {fileID: 5680220176148557947, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -9149,6 +9149,10 @@ PrefabInstance:
       value: TempMuzzle1
       objectReference: {fileID: 0}
     - target: {fileID: 375273395, guid: aa68547cc3224c44f8dfb6dc73409c2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600196637, guid: aa68547cc3224c44f8dfb6dc73409c2a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

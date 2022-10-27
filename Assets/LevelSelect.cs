@@ -68,7 +68,8 @@ public class LevelSelect : MonoBehaviour
 
                                 case 1:
                                     // sent to AE
-                                    SceneManager.LoadScene("Andy Dev Zone");
+                                    //SceneManager.LoadScene("Andy Dev Zone");
+                                    SceneManager.LoadScene(3);
                                     break;
                                 case 2:
                                     // sent to SONI
