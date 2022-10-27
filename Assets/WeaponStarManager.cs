@@ -11,7 +11,7 @@ public class WeaponStarManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int stars = 3;
+        int stars = 11;
         int next = 0;
         while (stars > 0)
         {

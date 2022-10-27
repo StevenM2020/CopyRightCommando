@@ -26,10 +26,11 @@ public class LevelSelect : MonoBehaviour
     private bool gun = false;
     private int levelSelected = 0;
     private bool terminalOn = false;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -40,7 +41,9 @@ public class LevelSelect : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape)) // close terminal
             {
                 terminalRawImage.enabled = false;
+                player.SetActive(true);
                 terminalOn = false;
+                
             }
             else if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -136,6 +139,11 @@ public class LevelSelect : MonoBehaviour
     public void OpenTerminal()
     {
         terminalRawImage.enabled = true;
+        Invoke("TurnOnTerminal", .2f);
+        player.SetActive(false);
+    }
+    void TurnOnTerminal()
+    {
         terminalOn = true;
     }
     void SelectLevel(int num) // changes image and int

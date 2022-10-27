@@ -26,9 +26,12 @@ public class WeaponDisplayCase : MonoBehaviour
     }
     public void SelectWeapon()
     {
+        //Debug.Log("asked for select");
+        if(blnIsActive)
         if (GameObject.Find("WeaponStarManager").GetComponent<WeaponStarManager>().AddWeapon(gunNum))
         {
             screen.GetComponent<Renderer>().material = MatGreen;
+            //Debug.Log("selected");
         }
         else
         {
