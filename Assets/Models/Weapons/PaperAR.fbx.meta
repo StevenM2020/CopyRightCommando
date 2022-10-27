@@ -17,6 +17,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: attachment
+    second: {fileID: 2100000, guid: 05f4fa1bd53c92341b3f0e2417b445fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: blackGlow
     second: {fileID: 2100000, guid: 3ad1f6759dcef6347925cc50edb12736, type: 2}
   - first:
@@ -32,6 +37,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: 8884b703c9ffce64ab56e2ba32b1e3b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: laserpointerMat
+    second: {fileID: 2100000, guid: 172ed292b2199c34a8d5de4b4e101676, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: paper
     second: {fileID: 2100000, guid: 8f6179e5f6ee68b4caefe54005c0d328, type: 2}
   - first:
@@ -39,6 +54,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: redGlow
     second: {fileID: 2100000, guid: c89592b1f5130344f960ad2336671797, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: reflective
+    second: {fileID: 2100000, guid: 266bf23cd56df8b40b2cc94dae0ef2a6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
