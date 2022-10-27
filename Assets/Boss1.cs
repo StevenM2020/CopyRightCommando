@@ -10,7 +10,7 @@ using UnityEngine;
 public class Boss1 : MonoBehaviour
 {
     public int boss1Health = 300;
-    //public PHealth PlayerHealth;
+    public PHealth PlayerHealth;
     //int attackPattern = Random.Range(1, 3);
     Rigidbody moneyBag;
     public GameObject bag;
@@ -21,7 +21,7 @@ public class Boss1 : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("player");   
+        player = GameObject.Find("Player");   
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -31,7 +31,7 @@ public class Boss1 : MonoBehaviour
         }
         if(collision.gameObject.name == "Player")
         {
-            //PlayerHealth.TakeDamage(5);
+            PlayerHealth.TakeDamage(5);
         }
             
     }
@@ -61,10 +61,15 @@ public class Boss1 : MonoBehaviour
             newBag.transform.LookAt(new Vector3(player.transform.position.x, player.transform.position.y - 2, player.transform.position.z));
             newBag.GetComponent<Rigidbody>().velocity = newBag.transform.forward * fltBagSpeed;
 
+
+
+
             //Rigidbody clone;
             //clone = Instantiate(moneyBag, transform.position, transform.rotation);
             //clone.velocity = transform.TransformDirection(Vector3.forward * 10);
-            //every 21 ticks it fires off a money bag
+            //every 50 ticks it fires off a money bag
+
+            
         }
 
     }

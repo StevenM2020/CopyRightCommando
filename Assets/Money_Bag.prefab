@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1018668537218437974}
   - component: {fileID: -3389060214968039387}
+  - component: {fileID: 1488937222924424628}
+  - component: {fileID: 5885529148095320928}
+  - component: {fileID: 642380698591677828}
   m_Layer: 0
   m_Name: Money_Bag
   m_TagString: Untagged
@@ -48,6 +51,47 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &1488937222924424628
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389800029075130860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!114 &5885529148095320928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389800029075130860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70dd697c34d49244994f4808bfdbebba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blnShotByPlayer: 0
+  damage: 5
+--- !u!65 &642380698591677828
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389800029075130860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.2, y: 11.2, z: 11.26}
+  m_Center: {x: 1, y: 83.5, z: -3.67}
 --- !u!1 &3262445947872370091
 GameObject:
   m_ObjectHideFlags: 0
