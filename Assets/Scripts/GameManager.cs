@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public PHealth player;
     public GameObject weapon1, weapon2;
     public string weaponName1, weaponName2;
+    private int enemies = 0;
     //public GameObject gun1, gun2;
     private void Awake()
     {
@@ -55,5 +56,17 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         }
+    }
+    public void ResetEnemyCount()
+    {
+        enemies = 0;
+    }
+    public void AddToEnenmies(int count)
+    {
+        enemies += count;
+    }
+    public int GetEnemies()
+    {
+        return enemies;
     }
 }
