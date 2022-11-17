@@ -33,16 +33,17 @@ public class Elevator : MonoBehaviour
     }
     public void ElevatorExit()
     {
- 
 
-        GameObject player = GameObject.Find("Player");
-        if (player != null)
+        if (!enterElevator)
         {
-            player.GetComponent<PlayerMovement>().enabled = false;
-        }
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
+            {
+                player.GetComponent<PlayerMovement>().enabled = false;
+            }
 
-        StartCoroutine(FadeOut());
-        
+            StartCoroutine(FadeOut());
+        }
 
     }
     IEnumerator FadeOut()

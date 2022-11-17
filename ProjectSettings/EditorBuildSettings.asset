@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StevenDevScene/ElevatorTestScene2.unity
     guid: 7f929a2d8e87bb2449ed22f193373461
+  - enabled: 1
+    path: Assets/Scenes/StevenDevScene/BisneyBoss.unity
+    guid: 5809abf74f2b78447bd3703864e461c0
+  - enabled: 1
+    path: Assets/Scenes/StevenDevScene/BisneyBossCutScene.unity
+    guid: 67e8a1534b94432438d4e88a5ba19667
   m_configObjects: {}
