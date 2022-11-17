@@ -24,6 +24,12 @@ ModelImporter:
   - first:
       74: 2350759592691021120
     second: Human FPS|Reload.arms
+  - first:
+      74: 5759320203151484646
+    second: SMg|Fire.smg
+  - first:
+      74: 7464821709595200282
+    second: Human FPS|Fire.Arms
   externalObjects: {}
   materials:
     materialImportMode: 2
