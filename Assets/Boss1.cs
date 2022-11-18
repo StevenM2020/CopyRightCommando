@@ -1,7 +1,7 @@
 //Boss 1 Script
 // Developed by Andy Jackowski
 //Controls everything relating to Boss 1, CEO of AE Sport
-// Date Last Modified: 10/27/22
+// Date Last Modified: 11/17/22
 
 
 using System.Collections;
@@ -34,6 +34,10 @@ public class Boss1 : MonoBehaviour
         {
             PlayerHealth.TakeDamage(5);
         }
+        if(collision.gameObject == null)
+        {
+            PlayerHealth.TakeDamage(5);
+        }
             
     }
     public void Damage(float damage)
@@ -50,6 +54,8 @@ public class Boss1 : MonoBehaviour
     {
         attackTime += 1;
         transform.LookAt(player.transform);
+
+
        //if(attackPattern == 1)
        // {
        //     //This is where the boss will throw the money bags over head, like a catapult
