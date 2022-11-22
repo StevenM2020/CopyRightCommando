@@ -9,7 +9,7 @@ public class LabDoorDetection : MonoBehaviour
     private bool blnActive = false;
     private void OnTriggerEnter(Collider collision)
     {
-        if (!blnActive)
+        if (!blnActive && collision.name == "Plaer")
         {
         wall.SetActive(true);
         boss.SetActive(true);

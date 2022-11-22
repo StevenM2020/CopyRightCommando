@@ -2,12 +2,15 @@ using System.Collections;
 //using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Experimental.VFX;
+using UnityEngine.VFX;
 
 public class BisneyBoss : MonoBehaviour
 {
-    public GameObject spin, detectionBar, detectionBox, visualBar, blastSpawnPoint;
+    public GameObject spin, detectionBar, detectionBox, visualBar, blastSpawnPoint1, blastSpawnPoint2;
     public GameObject targetMarkerPref;
     private GameObject targetMarker;
+    private bool boolBlastPoint = false;
 
     enum BossState { normal, run, follow, chargeJump, middle };
     BossState bossState = BossState.run;
@@ -31,8 +34,8 @@ public class BisneyBoss : MonoBehaviour
     public float shootDelay = .2f;
     private bool shot = false;
     public GameObject bullet;
-
-
+    public VisualEffect VFX1, VFX2;
+    private float fColorAmt = 200;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,11 +78,13 @@ public class BisneyBoss : MonoBehaviour
                     {
                         case int n when (n <= 1):
                             bossState = BossState.follow;
+                            SetVFXColor("g");
                             break;
-                        case int n when (n <= 90):
+                        case int n when (n <= 40):
                             target = maypointMid.transform.position;
                             agent.SetDestination(target);
                             bossState = BossState.middle;
+                            SetVFXColor("b");
                             break;
                         case int n when (n <= 90):
 
@@ -89,6 +94,7 @@ public class BisneyBoss : MonoBehaviour
                                 bossState = BossState.chargeJump;
                                 agent.isStopped = true;
                                 StartCoroutine(ChargeJump());
+                                SetVFXColor("r");
                             }
                             else
                             {
@@ -117,6 +123,7 @@ public class BisneyBoss : MonoBehaviour
                 {
                     middleAttackStarted = true;
                     visualBar.SetActive(true);
+                    detectionBar.SetActive(true);
                     StartCoroutine(MiddleAttack());
                 }
 
@@ -135,6 +142,8 @@ public class BisneyBoss : MonoBehaviour
         target = waypoints[newWaypoint].transform.position;
         agent.SetDestination(target);
         bossState = BossState.run;
+        //VFX1.GetComponent<VisualEffect>().CreateVFXEventAttribute(agent,);
+        SetVFXColor("g");
     }
     void UpdateDestination() // updates the agent with waypoint
     {
@@ -154,8 +163,12 @@ public class BisneyBoss : MonoBehaviour
     {
         //System.Random rnd = new System.Random();
         //GameObject newBullet = Instantiate(bullet, gun.transform.position, new Quaternion((float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100 + gun.transform.rotation.x, gun.transform.rotation.y + (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100, gun.transform.rotation.z, gun.transform.rotation.w));
-        blastSpawnPoint.transform.LookAt(player.transform.position);
-        GameObject newBullet = Instantiate(bullet, blastSpawnPoint.transform.position, blastSpawnPoint.transform.rotation);
+
+        GameObject point = boolBlastPoint?blastSpawnPoint1:blastSpawnPoint2;
+        boolBlastPoint = !boolBlastPoint;
+
+        point.transform.LookAt(player.transform.position);
+        GameObject newBullet = Instantiate(bullet, point.transform.position, point.transform.rotation);
         newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * fltBulletSpeed;
         newBullet.GetComponent<TestBullet>().damage = damage;
         shot = true;
@@ -167,7 +180,7 @@ public class BisneyBoss : MonoBehaviour
         float startRotation = spin.transform.eulerAngles.y;
         for (int i = 0; i < 360; i++)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             //spin.transform.rotation = new Quaternion(0,10 * i,0, spin.transform.rotation.w);
             //////spin.transform.eulerAngles = new Vector3(transform.eulerAngles.x, startRotation + i, transform.eulerAngles.z);
             spin.transform.eulerAngles = new Vector3(90, startRotation + i, 180);
@@ -178,6 +191,7 @@ public class BisneyBoss : MonoBehaviour
         ToRun();
         middleAttackStarted = false;
         visualBar.SetActive(false);
+        detectionBar.SetActive(false);
         spin.transform.eulerAngles = new Vector3(90, 0, 180);
     }
     private IEnumerator ChargeJump() // fire a bullet where enemy is looking
@@ -192,7 +206,8 @@ public class BisneyBoss : MonoBehaviour
             //transform.position = new Vector3(Mathf.Lerp(startVector.x, targetMarker.transform.position.x, i / 10), 0, Mathf.Lerp(startVector.y, targetMarker.transform.position.y, i / 10));
             //float fI = i / 10;
             //Debug.Log(Mathf.Pow(Mathf.Lerp(1, 10, i <= .5f ? (i * 10f) : 10f - (i * 10f)), .5f));
-            Debug.Log(Mathf.Sin(Mathf.PI * i));
+
+            //                                     Debug.Log(Mathf.Sin(Mathf.PI * i));
             Vector3 pos = Vector3.Lerp(start, end,i);
             transform.position = new Vector3(pos.x, Mathf.Sin(Mathf.PI * i) * 5 + .5f, pos.z);
             //transform.position = new Vector3(pos.x,Mathf.Pow(Mathf.Lerp(1,10, i <= .5f ? i*10: 10 - i*10),.7f), pos.z);
@@ -202,6 +217,22 @@ public class BisneyBoss : MonoBehaviour
         ToRun();
         agent.isStopped = false;
         Destroy(targetMarker);
+    }
+    public void DamagePlayer(float damage)
+    {
+        //if(!player == null)
+            
+    }
+    private void SetVFXColor(string str)
+    {
+        if(VFX1 == null || VFX2 == null)
+            return;
+        VFX1.SetFloat("r", str=="r"?fColorAmt:0);
+        VFX2.SetFloat("r", str == "r" ? fColorAmt : 0);
+        VFX1.SetFloat("g", str == "g" ? fColorAmt : 0);
+        VFX2.SetFloat("g", str == "g" ? fColorAmt : 0);
+        VFX1.SetFloat("b", str == "b" ? fColorAmt : 0);
+        VFX2.SetFloat("b", str == "b" ? fColorAmt : 0);
     }
 }
 //i > 5 ? Mathf.Lerp(5, 0, i / 5): Mathf.Lerp(0, 5, i/5)
