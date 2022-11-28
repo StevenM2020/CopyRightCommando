@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2490332796968733315, guid: 5b481274c26b1114aad21a310d84f79f, type: 3}
       propertyPath: m_Name
-      value: PlasmaBallBullet
+      value: PlasmaBallBullet Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2490332796968733315, guid: 5b481274c26b1114aad21a310d84f79f, type: 3}
       propertyPath: m_IsActive
@@ -110,6 +110,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2490332796968733315, guid: 5b481274c26b1114aad21a310d84f79f, type: 3}
   m_PrefabInstance: {fileID: 4053125005469164413}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &7359587324995106107
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923291903490370046}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!135 &563822086795215224
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -118,8 +134,21 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923291903490370046}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.5164759
   m_Center: {x: -0.045179736, y: 0.0317461, z: 0}
+--- !u!114 &3149693680228456190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923291903490370046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85b5b612c83ab5418a788d8c7eca6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0

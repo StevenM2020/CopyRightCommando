@@ -4,17 +4,20 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Experimental.VFX;
 using UnityEngine.VFX;
+using TMPro;
+using UnityEngine.UI;
 
 public class BisneyBoss : MonoBehaviour
 {
     public GameObject spin, detectionBar, detectionBox, visualBar, blastSpawnPoint1, blastSpawnPoint2;
     public GameObject targetMarkerPref;
+    public Slider healthBar;
     private GameObject targetMarker;
     private bool boolBlastPoint = false;
-
+    
     enum BossState { normal, run, follow, chargeJump, middle };
     BossState bossState = BossState.run;
-    private float health;
+    private float health = 100;
     private FieldOfView fov;
     private GameObject player;
     private float lookSpeed = 200;
@@ -30,12 +33,13 @@ public class BisneyBoss : MonoBehaviour
     private bool middleAttackStarted = false;
 
     public float damage;
-    private float fltBulletSpeed = 100;
+    private float fltBulletSpeed = 10;
     public float shootDelay = .2f;
     private bool shot = false;
     public GameObject bullet;
     public VisualEffect VFX1, VFX2;
     private float fColorAmt = 200;
+    private float fDestroy = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +47,7 @@ public class BisneyBoss : MonoBehaviour
         UpdateDestination();
         fov = GetComponent<FieldOfView>();
         player = GameObject.Find("Player");
-
+        healthBar.value = health;
 
     }
 
@@ -164,13 +168,14 @@ public class BisneyBoss : MonoBehaviour
         //System.Random rnd = new System.Random();
         //GameObject newBullet = Instantiate(bullet, gun.transform.position, new Quaternion((float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100 + gun.transform.rotation.x, gun.transform.rotation.y + (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100, gun.transform.rotation.z, gun.transform.rotation.w));
 
-        GameObject point = boolBlastPoint?blastSpawnPoint1:blastSpawnPoint2;
+        GameObject point = boolBlastPoint ? blastSpawnPoint1 : blastSpawnPoint2;
         boolBlastPoint = !boolBlastPoint;
 
         point.transform.LookAt(player.transform.position);
         GameObject newBullet = Instantiate(bullet, point.transform.position, point.transform.rotation);
+        newBullet.GetComponent<PlasmaBallScript>().StatDestroy(fDestroy);
         newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * fltBulletSpeed;
-        newBullet.GetComponent<TestBullet>().damage = damage;
+        newBullet.GetComponent<PlasmaBallScript>().damage = damage;
         shot = true;
         yield return new WaitForSeconds(shootDelay);
         shot = false;
@@ -187,7 +192,7 @@ public class BisneyBoss : MonoBehaviour
             //spin.transform.rotation =  Quaternion.Lerp(new Quaternion(0, 0, 0, 0),new Quaternion(0, 360, 0, 0), i/36);
             yield return new WaitForSeconds(.01f);
         }
-        
+
         ToRun();
         middleAttackStarted = false;
         visualBar.SetActive(false);
@@ -201,14 +206,14 @@ public class BisneyBoss : MonoBehaviour
         Vector3 start = transform.position;
         Vector3 end = targetMarker.transform.position;
 
-        for (float i = .05f; i < 1.05; i+=.05f)
+        for (float i = .05f; i < 1.05; i += .05f)
         {
             //transform.position = new Vector3(Mathf.Lerp(startVector.x, targetMarker.transform.position.x, i / 10), 0, Mathf.Lerp(startVector.y, targetMarker.transform.position.y, i / 10));
             //float fI = i / 10;
             //Debug.Log(Mathf.Pow(Mathf.Lerp(1, 10, i <= .5f ? (i * 10f) : 10f - (i * 10f)), .5f));
 
             //                                     Debug.Log(Mathf.Sin(Mathf.PI * i));
-            Vector3 pos = Vector3.Lerp(start, end,i);
+            Vector3 pos = Vector3.Lerp(start, end, i);
             transform.position = new Vector3(pos.x, Mathf.Sin(Mathf.PI * i) * 5 + .5f, pos.z);
             //transform.position = new Vector3(pos.x,Mathf.Pow(Mathf.Lerp(1,10, i <= .5f ? i*10: 10 - i*10),.7f), pos.z);
             yield return new WaitForSeconds(.1f);
@@ -221,13 +226,13 @@ public class BisneyBoss : MonoBehaviour
     public void DamagePlayer(float damage)
     {
         //if(!player == null)
-            
+
     }
     private void SetVFXColor(string str)
     {
-        if(VFX1 == null || VFX2 == null)
+        if (VFX1 == null || VFX2 == null)
             return;
-        VFX1.SetFloat("r", str=="r"?fColorAmt:0);
+        VFX1.SetFloat("r", str == "r" ? fColorAmt : 0);
         VFX2.SetFloat("r", str == "r" ? fColorAmt : 0);
         VFX1.SetFloat("g", str == "g" ? fColorAmt : 0);
         VFX2.SetFloat("g", str == "g" ? fColorAmt : 0);
