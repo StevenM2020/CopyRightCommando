@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     public PHealth player;
-    public GameObject weapon1, weapon2;
-    public string weaponName1, weaponName2;
+    int w1, w2;
     private int enemies = 0;
     //public GameObject gun1, gun2;
     private void Awake()
@@ -25,7 +24,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        weapon2.SetActive(false);
+        //weapon2.SetActive(false);
         player = GameObject.Find("Player").GetComponent<PHealth>();
        // if(gun1.GetComponent<Gun>() == null)
        // {
@@ -42,12 +41,12 @@ public class GameManager : MonoBehaviour
     {
         if (GameObject.Find("Player"))
         {
-            if (weapon1 == null || weapon2 == null)
-            {
-                weapon1 = GameObject.Find(weaponName1);
-                weapon2 = GameObject.Find(weaponName2);
-                weapon2.SetActive(false);
-            }
+            //if (weapon1 == null || weapon2 == null)
+            //{
+            //    weapon1 = GameObject.Find(weaponName1);
+            //    weapon2 = GameObject.Find(weaponName2);
+            //    weapon2.SetActive(false);
+            //}
             if (player == null)
                 player = GameObject.Find("Player").GetComponent<PHealth>();
         }
@@ -68,5 +67,21 @@ public class GameManager : MonoBehaviour
     public int GetEnemies()
     {
         return enemies;
+    }
+    public int GetWeapon1()
+    {
+        return w1;
+    }
+    public int GetWeapon2()
+    {
+        return w2;
+    }
+    public void SetWeapon1(int weapon1)
+    {
+        w1 = weapon1;
+    }
+    public void SetWeapon2(int weapon2)
+    {
+        w2 = weapon2;
     }
 }

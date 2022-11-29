@@ -28,7 +28,7 @@ public class PaperBallScript : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 10);
 
 
     }
@@ -66,8 +66,9 @@ public class PaperBallScript : MonoBehaviour
             else if (collision.name != "Player")
             {
                 GameObject aud = Instantiate(audWall);
-                aud.transform.position = collision.transform.position;
-                aud.GetComponent<DestroySelf>().DestroyObject(1);
+
+                //aud.transform.position = collision.transform.position;
+                //aud.GetComponent<DestroySelf>().DestroyObject(1);
                 spawnPaper(collision.gameObject);
                 Destroy(gameObject);
             }
@@ -82,8 +83,8 @@ public class PaperBallScript : MonoBehaviour
                 {
                     player.TakeDamage(damage);
                     GameObject aud = Instantiate(audPlayer);
-                    aud.transform.position = collision.transform.position;
-                    aud.GetComponent<DestroySelf>().DestroyObject(1);
+                    //aud.transform.position = collision.transform.position;
+                    //aud.GetComponent<DestroySelf>().DestroyObject(1);
                     spawnPaper(collision.gameObject);
                 }
             }
