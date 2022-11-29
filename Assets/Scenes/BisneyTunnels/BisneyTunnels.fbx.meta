@@ -3,7 +3,22 @@ guid: 5f12503bacb9dfa42b244d567b50324a
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceilling
+    second: {fileID: 2100000, guid: ccc6f66c38954ad4b8066fd03cc5dca7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor Backrooms
+    second: {fileID: 2100000, guid: 580fe78026e83004c98a675881900a60, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: YellowWallsBackroom
+    second: {fileID: 2100000, guid: cd1df075400c60548bb409fa8427a75f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
