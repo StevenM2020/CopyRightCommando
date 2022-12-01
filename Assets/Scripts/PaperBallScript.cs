@@ -64,6 +64,18 @@ public class PaperBallScript : MonoBehaviour
                     hit.GetComponent<DestroySelf>().DestroyObject(.2f);
                 }
             }
+            else if (collision.name == "BisneyBoss")
+            {
+                collision.gameObject.GetComponent<BisneyBoss>().TakeDamage(damage);
+                if (blnShotByPlayer)
+                {
+                    GameObject hit = Instantiate(hitMarker);
+                    hit.transform.parent = GameObject.Find("InteractImage").transform;
+                    hit.transform.position = GameObject.Find("InteractImage").transform.position;
+                    spawnPaper(collision.gameObject);
+                    hit.GetComponent<DestroySelf>().DestroyObject(.2f);
+                }
+            }
             else if (collision.name != "Player")
             {
                 //GameObject aud = Instantiate(audWall);

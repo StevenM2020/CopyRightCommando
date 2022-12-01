@@ -5,11 +5,11 @@ using UnityEngine;
 public class DetectionBar : MonoBehaviour
 {
     public GameObject bisneyBoss;
-    public float damage = 20;
+    //public float damage = 20;
     private void OnTriggerEnter(Collider other)
     {
-       bisneyBoss.GetComponent<BisneyBoss>().DamagePlayer(damage);
+       bisneyBoss.GetComponent<BisneyBoss>().BarHitPlayer();
         Debug.Log("playe hit with bar");
-       gameObject.SetActive(false);
+      // gameObject.SetActive(false);
     }
 }

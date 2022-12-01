@@ -23,7 +23,10 @@ public class PlasmaBallScript : MonoBehaviour
         // if(!(collision.gameObject.tag == "Enemy"))
         /// Destroy(gameObject);
         /// 
-
+        if(collision.name == "BisneyBoss")
+        {
+            return;
+        }
             if (collision.name == "Player")
             {
                 PHealth player = collision.transform.GetComponent<PHealth>();

@@ -24,6 +24,11 @@ public class PHealth : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         healthBar2.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene("Lose Screen");
+        }
     }
    
 

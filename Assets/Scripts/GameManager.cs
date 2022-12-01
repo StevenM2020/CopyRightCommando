@@ -39,22 +39,22 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameObject.Find("Player"))
-        {
+        //if (GameObject.Find("Player"))
+        //{
             //if (weapon1 == null || weapon2 == null)
             //{
             //    weapon1 = GameObject.Find(weaponName1);
             //    weapon2 = GameObject.Find(weaponName2);
             //    weapon2.SetActive(false);
             //}
-            if (player == null)
-                player = GameObject.Find("Player").GetComponent<PHealth>();
-        }
-        if(player.currentHealth <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //    if (player == null)
+        //        player = GameObject.Find("Player").GetComponent<PHealth>();
+        ////}
+        //if(player.currentHealth <= 0)
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        }
+        //}
     }
     public void ResetEnemyCount()
     {

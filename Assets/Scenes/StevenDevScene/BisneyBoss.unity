@@ -1439,6 +1439,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EvilLab Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2316695212117243800, guid: bc57318752630f44898278f989618d68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3129261400223444258, guid: bc57318752630f44898278f989618d68, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1615,6 +1619,10 @@ PrefabInstance:
     - target: {fileID: 8258353473514296449, guid: d0dddf59ced2e124a888d90a4aee96fe, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258353473514296449, guid: d0dddf59ced2e124a888d90a4aee96fe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8258353473514296453, guid: d0dddf59ced2e124a888d90a4aee96fe, type: 3}
       propertyPath: m_Enabled
@@ -2175,7 +2183,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.2, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2955,6 +2963,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2512330914826118103, guid: fd27706417cff66419764a2e40af461e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd27706417cff66419764a2e40af461e, type: 3}
 --- !u!1 &1116719138 stripped
@@ -3132,6 +3144,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1049414392, guid: aa68547cc3224c44f8dfb6dc73409c2a, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 1946786275}
     - target: {fileID: 1132207690, guid: aa68547cc3224c44f8dfb6dc73409c2a, type: 3}
       propertyPath: ammoText
       value: 
@@ -3143,6 +3159,10 @@ PrefabInstance:
     - target: {fileID: 1600196638, guid: aa68547cc3224c44f8dfb6dc73409c2a, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842672357, guid: aa68547cc3224c44f8dfb6dc73409c2a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1173791000231201660, guid: aa68547cc3224c44f8dfb6dc73409c2a, type: 3}
       propertyPath: m_IsActive
@@ -9281,6 +9301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4676d54190ed803458646801267d5f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapons: []
 --- !u!1 &1805997174 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6762534856998494357, guid: bc57318752630f44898278f989618d68, type: 3}
@@ -9707,7 +9728,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bisneyBoss: {fileID: 2052855759}
-  damage: 20
 --- !u!1 &1855828052
 GameObject:
   m_ObjectHideFlags: 0
@@ -9836,8 +9856,8 @@ RectTransform:
   m_Father: {fileID: 286933127}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.2, y: 0}
+  m_AnchorMax: {x: 0.2, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10261,13 +10281,14 @@ GameObject:
   - component: {fileID: 2052855762}
   - component: {fileID: 2052855761}
   - component: {fileID: 2052855760}
+  - component: {fileID: 2052855763}
   m_Layer: 0
   m_Name: BisneyBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2052855760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10287,7 +10308,7 @@ MonoBehaviour:
   blastSpawnPoint1: {fileID: 589743354}
   blastSpawnPoint2: {fileID: 473113196}
   targetMarkerPref: {fileID: 4943825176710447206, guid: e11f50944d8264b4db9ba02f283d6148, type: 3}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 827572290}
   waypoints:
   - {fileID: 1892924670}
   - {fileID: 1842012213}
@@ -10337,6 +10358,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2052855763
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052855759}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3692131, y: 1.5828806, z: 2.1380892}
+  m_Center: {x: -0.0035448074, y: 0.2914403, z: -0.0014822483}
 --- !u!1 &2067399815 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8554395673746373068, guid: bc57318752630f44898278f989618d68, type: 3}

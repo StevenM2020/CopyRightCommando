@@ -6,6 +6,7 @@ using UnityEngine.Experimental.VFX;
 using UnityEngine.VFX;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BisneyBoss : MonoBehaviour
 {
@@ -40,6 +41,11 @@ public class BisneyBoss : MonoBehaviour
     public VisualEffect VFX1, VFX2;
     private float fColorAmt = 200;
     private float fDestroy = 20;
+
+    // damage 
+    private float jumpDamage = 30;
+    private float spinDamage = 30;
+    private IEnumerator middleAttackCoroutine;
     // Start is called before the first frame update
     void Start()
     {
@@ -80,7 +86,7 @@ public class BisneyBoss : MonoBehaviour
                 {
                     switch (UnityEngine.Random.Range(0, 100))
                     {
-                        case int n when (n <= 1):
+                        case int n when (n <= -1):
                             bossState = BossState.follow;
                             SetVFXColor("g");
                             break;
@@ -128,7 +134,8 @@ public class BisneyBoss : MonoBehaviour
                     middleAttackStarted = true;
                     visualBar.SetActive(true);
                     detectionBar.SetActive(true);
-                    StartCoroutine(MiddleAttack());
+                    middleAttackCoroutine = MiddleAttack();
+                    StartCoroutine(middleAttackCoroutine);
                 }
 
                 break;
@@ -221,6 +228,13 @@ public class BisneyBoss : MonoBehaviour
         agent.enabled = true;
         ToRun();
         agent.isStopped = false;
+        if (Vector3.Distance(transform.position, player.transform.position) < 3)
+        {
+            player.GetComponent<PHealth>().TakeDamage(jumpDamage);
+            //GameObject aud = Instantiate(audPlayer);
+            //aud.transform.position = collision.transform.position;
+            //aud.GetComponent<DestroySelf>().DestroyObject(1);
+        }
         Destroy(targetMarker);
     }
     public void DamagePlayer(float damage)
@@ -238,6 +252,25 @@ public class BisneyBoss : MonoBehaviour
         VFX2.SetFloat("g", str == "g" ? fColorAmt : 0);
         VFX1.SetFloat("b", str == "b" ? fColorAmt : 0);
         VFX2.SetFloat("b", str == "b" ? fColorAmt : 0);
+    }
+   public void TakeDamage(float newDamage)
+    {
+        health -= newDamage;
+        healthBar.value = health;
+        if(health <= 0)
+        {
+            SceneManager.LoadScene("Win Screen");
+        }
+    }
+    public void BarHitPlayer()
+    {
+        StopCoroutine(middleAttackCoroutine);
+        ToRun();
+        middleAttackStarted = false;
+        visualBar.SetActive(false);
+        detectionBar.SetActive(false);
+        spin.transform.eulerAngles = new Vector3(90, 0, 180);
+        player.GetComponent<PHealth>().TakeDamage(spinDamage);
     }
 }
 //i > 5 ? Mathf.Lerp(5, 0, i / 5): Mathf.Lerp(0, 5, i/5)
