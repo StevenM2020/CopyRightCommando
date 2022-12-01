@@ -24,7 +24,8 @@ public class SoniBoss : MonoBehaviour
     {
         if (collision.gameObject.name == "TestBullet")
         {
-
+            health = health - 100;
+            Debug.Log("boss is tagged");
         }
         if (collision.gameObject.name == "Player")
         {
@@ -50,11 +51,11 @@ public class SoniBoss : MonoBehaviour
         transform.LookAt(player.transform);
         if (attackTime % 50 == 0)
         {
-            Debug.Log("throw bag");
-            GameObject newBag = Instantiate(bullet);
-            newBag.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y - 2, spawnPoint.transform.position.z);
-            newBag.transform.LookAt(new Vector3(player.transform.position.x, player.transform.position.y - 2, player.transform.position.z));
-            newBag.GetComponent<Rigidbody>().velocity = newBag.transform.forward * bulletSpeed;
+            Debug.Log("shooting bullet");
+            GameObject newBullet = Instantiate(bullet);
+            newBullet.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y - 2, spawnPoint.transform.position.z);
+            newBullet.transform.LookAt(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z));
+            newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * bulletSpeed;
         }
         }
    
