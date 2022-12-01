@@ -15,7 +15,37 @@ ModelImporter:
   - first:
       74: -2253604097510493432
     second: Human FPS|reload
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black
+    second: {fileID: 2100000, guid: e4d74703eb5714e4691b9c1b57e43960, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 37dca2a96d0615c4da9d39cd6c7482cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: attachment
+    second: {fileID: 2100000, guid: 05f4fa1bd53c92341b3f0e2417b445fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blueTintMetal
+    second: {fileID: 2100000, guid: 164ac41b789d7f742b838ccaa30b1955, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: laserpointerMat
+    second: {fileID: 2100000, guid: 172ed292b2199c34a8d5de4b4e101676, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: reflective
+    second: {fileID: 2100000, guid: 266bf23cd56df8b40b2cc94dae0ef2a6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

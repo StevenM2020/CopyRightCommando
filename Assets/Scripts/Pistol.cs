@@ -36,7 +36,7 @@ public class Pistol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ammo.totalAmmo == 0)
+        if(ammo.totalAmmo + ammo.clip == 0)
         {
             ammoText.text = "no ammo";
             return;
@@ -59,7 +59,6 @@ public class Pistol : MonoBehaviour
                         }
 
                         ammo.clip--;
-                        ammo.totalAmmo--;
                         tmrShoot = shootDelay;
                     }
                     
@@ -69,17 +68,23 @@ public class Pistol : MonoBehaviour
                     tmrShoot -= Time.deltaTime;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.R) && ammo.totalAmmo > ammo.clipSize) // reload
+            if (Input.GetKeyDown(KeyCode.R) && ammo.clip < ammo.clipSize && ammo.totalAmmo > 0) // reload
             {
                 blnReloading = true;
-                if (ammo.totalAmmo > ammo.clipSize)
+                if (ammo.totalAmmo - (ammo.clipSize - ammo.clip) > 0)
+                {
+                    ammo.totalAmmo -= ammo.clipSize - ammo.clip;
                     ammo.clip = ammo.clipSize;
+                }
                 else
-                    ammo.clip = ammo.totalAmmo;
+                {
+                    ammo.clip += ammo.totalAmmo;
+                    ammo.totalAmmo = 0;
+                }
                 animator.SetTrigger("Reload");
                 Invoke("reloaded", reloadDelay);
             }
-            ammoText.text = "Bullets: " + ammo.clip;
+            ammoText.text = "Ammo: " + ammo.totalAmmo + " / "+ ammo.clip;
         }
         else
         {

@@ -16,7 +16,8 @@ public class weaponPicker : MonoBehaviour
     void Start()
     {
         weapon1 = weapons[GameManager.instance.GetWeapon1()];
-        //weapon2 = weapons[GameManager.instance.GetWeapon2()];
+        weapon2 = weapons[GameManager.instance.GetWeapon2()];
+        weapon1.SetActive(true);
     }
 
     // Update is called once per frame
@@ -43,11 +44,11 @@ public class weaponPicker : MonoBehaviour
         Debug.Log("reloading");
         int intw = weapon1.activeSelf ? 1 : 0;
         weapon1.SetActive(true);
-        //weapon2.SetActive(true);
+        weapon2.SetActive(true);
         weapon1.GetComponent<Ammo>().Reload();
-        //weapon2.GetComponent<Ammo>().Reload();
+        weapon2.GetComponent<Ammo>().Reload();
         weapon1.SetActive(intw == 1);
-        //weapon2.SetActive(intw == 2);
+        weapon2.SetActive(intw == 2);
         Debug.Log("reloaded");
     }
 }
