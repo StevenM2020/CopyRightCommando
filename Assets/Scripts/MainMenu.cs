@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
     public void PlayGame()
     {
         SceneManager.LoadScene("Hub");
@@ -14,5 +15,6 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("QUIT!");
         Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

@@ -4123,6 +4123,7 @@ GameObject:
   - component: {fileID: 603817040}
   - component: {fileID: 603817039}
   - component: {fileID: 603817038}
+  - component: {fileID: 603817042}
   m_Layer: 0
   m_Name: TerminalCamera
   m_TagString: Untagged
@@ -4309,6 +4310,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &603817042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603817037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d941ae5f3abb31c43afad82e8de47b0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HubSFX: {fileID: 8300000, guid: c3b64b8c1aebd024abe92d6c4fc91cf6, type: 3}
 --- !u!1 &619672472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4226265329731043155, guid: 1d84d589b7622d2468dffc0cbafaec3f, type: 3}
@@ -4393,6 +4407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554844b8ac01d8145904ec6976ec16f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VaultOpenSFX: {fileID: 8300000, guid: 15bed52595f7ad044838452d7deec8d6, type: 3}
 --- !u!1 &621724912 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1383216715010692127, guid: 1d84d589b7622d2468dffc0cbafaec3f, type: 3}
@@ -7104,6 +7119,10 @@ PrefabInstance:
     - target: {fileID: 5680220177239251152, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465208795335291566, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
