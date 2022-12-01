@@ -15,8 +15,8 @@ public class weaponPicker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        weapon1 = weapons[GameManager.instance.GetWeapon1()];
-        weapon2 = weapons[GameManager.instance.GetWeapon2()];
+        weapon1 = weapons[GameManager.instance.GetWeapon1()-1 > 0 ? GameManager.instance.GetWeapon1() - 1 : 0];
+        weapon2 = weapons[GameManager.instance.GetWeapon2()-1 > 0 ? GameManager.instance.GetWeapon2() - 1 : 0];
         weapon1.SetActive(true);
     }
 

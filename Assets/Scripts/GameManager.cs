@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     public void SetWeapon1(int weapon1)
     {
         w1 = weapon1;
+        Debug.Log(w1 + " G " + weapon1);
     }
     public void SetWeapon2(int weapon2)
     {

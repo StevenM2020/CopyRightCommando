@@ -31,12 +31,14 @@ public class WeaponDisplayCase : MonoBehaviour
         if (GameObject.Find("WeaponStarManager").GetComponent<WeaponStarManager>().AddWeapon(gunNum))
         {
             screen.GetComponent<Renderer>().material = MatGreen;
+            
             //Debug.Log("selected");
         }
         else
         {
             screen.GetComponent<Renderer>().material = MatYellow;
         }
+        GameObject.Find("WeaponStarManager").GetComponent<WeaponStarManager>().updateGuns();
     }
     
 }

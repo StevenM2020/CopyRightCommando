@@ -33,7 +33,7 @@ public class BisneyBoss : MonoBehaviour
     private float normalAttackTime2 = 0;
     private bool middleAttackStarted = false;
 
-    public float damage;
+    
     private float fltBulletSpeed = 10;
     public float shootDelay = .2f;
     private bool shot = false;
@@ -45,6 +45,7 @@ public class BisneyBoss : MonoBehaviour
     // damage 
     private float jumpDamage = 30;
     private float spinDamage = 30;
+    private float blastDamage = 10;
     private IEnumerator middleAttackCoroutine;
     // Start is called before the first frame update
     void Start()
@@ -182,7 +183,7 @@ public class BisneyBoss : MonoBehaviour
         GameObject newBullet = Instantiate(bullet, point.transform.position, point.transform.rotation);
         newBullet.GetComponent<PlasmaBallScript>().StatDestroy(fDestroy);
         newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * fltBulletSpeed;
-        newBullet.GetComponent<PlasmaBallScript>().damage = damage;
+        newBullet.GetComponent<PlasmaBallScript>().damage = blastDamage;
         shot = true;
         yield return new WaitForSeconds(shootDelay);
         shot = false;

@@ -9,4 +9,11 @@ public class ReturnToHub : MonoBehaviour
     {
         SceneManager.LoadScene("Hub");
     }
+     void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Return))
+        {
+            LoadHUB();
+        }
+    }
 }
