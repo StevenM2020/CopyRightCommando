@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Boss1 : MonoBehaviour
 {
-    public int boss1Health = 300;
+    public int boss1Health = 100;
     public PHealth PlayerHealth;
     //int attackPattern = Random.Range(1, 3);
     Rigidbody moneyBag;
