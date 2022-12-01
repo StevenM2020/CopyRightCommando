@@ -6,10 +6,11 @@ using TMPro;
 public class Pistol : MonoBehaviour
 {
     public GameObject bullet;
-    public GameObject spawnPoint;
+    public GameObject[] spawnPoint;
     public float damage;
     public int accuracyOffSet;
     public float shootDelay;
+    public float reloadDelay = 2;
     //public int numOfBullets = 10;
     //public int totalBullets = 20;
     //public int maxBullets = 20;
@@ -49,10 +50,14 @@ public class Pistol : MonoBehaviour
                     if (Input.GetMouseButton(0)) // shoot
                     {
                         animator.SetTrigger("Fire");
-                        GameObject newBullet = Instantiate(bullet, spawnPoint.transform.position, new Quaternion((float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100 + gameObject.transform.rotation.x, gameObject.transform.rotation.y + (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100, gameObject.transform.rotation.z, gameObject.transform.rotation.w));
+                        foreach (GameObject point in spawnPoint)
+                        {
+                        GameObject newBullet = Instantiate(bullet, point.transform.position, new Quaternion((float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100 + gameObject.transform.rotation.x, gameObject.transform.rotation.y + (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100, gameObject.transform.rotation.z, gameObject.transform.rotation.w));
                         newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * fltBulletSpeed;
                         newBullet.GetComponent<PaperBallScript>().StartPaper(1, 5, gameObject.transform);
                         newBullet.GetComponent<PaperBallScript>().blnShotByPlayer = true;
+                        }
+
                         ammo.clip--;
                         ammo.totalAmmo--;
                         tmrShoot = shootDelay;
@@ -72,7 +77,7 @@ public class Pistol : MonoBehaviour
                 else
                     ammo.clip = ammo.totalAmmo;
                 animator.SetTrigger("Reload");
-                Invoke("reloaded", 2);
+                Invoke("reloaded", reloadDelay);
             }
             ammoText.text = "Bullets: " + ammo.clip;
         }

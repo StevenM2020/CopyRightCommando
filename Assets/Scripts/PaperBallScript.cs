@@ -11,6 +11,7 @@ public class PaperBallScript : MonoBehaviour
     public GameObject hitMarker;
     public GameObject audPlayer, audWall;
     public GameObject copyRightPaper;
+    public float scale = 40;
     Transform startTrans;
     public int GetNumPaperBalls()
     {
@@ -20,7 +21,7 @@ public class PaperBallScript : MonoBehaviour
     {
         ball = Instantiate(paperBalls[intBall], transform.position, transform.rotation);
         ball.transform.parent = transform;
-        ball.transform.localScale= new Vector3 (30,30, 30);
+        ball.transform.localScale= new Vector3 (scale, scale, scale);
         damage = newDamage;
         startTrans = newStartTrans;
     }
@@ -65,7 +66,7 @@ public class PaperBallScript : MonoBehaviour
             }
             else if (collision.name != "Player")
             {
-                GameObject aud = Instantiate(audWall);
+                //GameObject aud = Instantiate(audWall);
 
                 //aud.transform.position = collision.transform.position;
                 //aud.GetComponent<DestroySelf>().DestroyObject(1);
