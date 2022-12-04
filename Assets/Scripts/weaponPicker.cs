@@ -51,4 +51,9 @@ public class weaponPicker : MonoBehaviour
         weapon2.SetActive(intw == 2);
         Debug.Log("reloaded");
     }
+    public void DisableWeapons()
+    {
+        weapon1.SetActive(false);
+        weapon2.SetActive(false);
+    }
 }
