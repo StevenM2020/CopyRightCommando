@@ -10,6 +10,7 @@ public class SoniBoss : MonoBehaviour
     public PHealth PlayerHealth;
     Rigidbody testBullet;
     public GameObject bullet;
+    public GameObject bigBullet;
     private GameObject player;
     public float bulletSpeed =40;
     public GameObject spawnPoint;
@@ -24,7 +25,7 @@ public class SoniBoss : MonoBehaviour
     {
         if (collision.gameObject.name == "TestBullet")
         {
-            health = health - 100;
+            //health = health - 100;
             Debug.Log("boss is tagged");
         }
         if (collision.gameObject.name == "Player")
@@ -51,12 +52,24 @@ public class SoniBoss : MonoBehaviour
         transform.LookAt(player.transform);
         if (attackTime % 50 == 0)
         {
-            Debug.Log("shooting bullet");
-            GameObject newBullet = Instantiate(bullet);
-            newBullet.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y - 2, spawnPoint.transform.position.z);
-            newBullet.transform.LookAt(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z));
-            newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * bulletSpeed;
+            //if(health !>= 150)
+            //{
+            //    Debug.Log("shooting big bullet");
+            //    GameObject newBigBullet = Instantiate(bigBullet);
+            //    newBigBullet.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y - 2, spawnPoint.transform.position.z);
+            //    newBigBullet.transform.LookAt(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z));
+            //    newBigBullet.GetComponent<Rigidbody>().velocity = newBigBullet.transform.forward * bulletSpeed;
+            //}
+            //else 
+            //{
+                Debug.Log("shooting bullet");
+                GameObject newBullet = Instantiate(bullet);
+                newBullet.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y - 2, spawnPoint.transform.position.z);
+                newBullet.transform.LookAt(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z));
+                newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * bulletSpeed;
+            //}
+            
         }
-        }
+     }
    
 }
