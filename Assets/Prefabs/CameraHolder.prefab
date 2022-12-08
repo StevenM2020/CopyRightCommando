@@ -2886,6 +2886,7 @@ GameObject:
   - component: {fileID: 1842672358}
   - component: {fileID: 1842672359}
   - component: {fileID: 745048306}
+  - component: {fileID: 3193118483631251597}
   m_Layer: 0
   m_Name: WeaponPicker
   m_TagString: Untagged
@@ -2946,6 +2947,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   watch: {fileID: 1953056806}
   arrow: {fileID: 1915408500}
+--- !u!114 &3193118483631251597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842672357}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52dcc93e43a47544a2067d95e71576a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  watch: {fileID: 0}
+  arrow: {fileID: 0}
 --- !u!1 &1915408500
 GameObject:
   m_ObjectHideFlags: 0
@@ -4129,7 +4144,7 @@ MonoBehaviour:
   bullet: {fileID: 886983983731044012, guid: ba58a5f66f51c574ca3792ea293924bc, type: 3}
   spawnPoint:
   - {fileID: 2036049325}
-  damage: 3
+  damage: 20
   accuracyOffSet: 0
   shootDelay: 0.5
   reloadDelay: 2
@@ -4684,7 +4699,7 @@ MonoBehaviour:
   bullet: {fileID: 886983983731044012, guid: ba58a5f66f51c574ca3792ea293924bc, type: 3}
   spawnPoint:
   - {fileID: 98517411}
-  damage: 5
+  damage: 25
   accuracyOffSet: 0
   shootDelay: 1
   reloadDelay: 2
@@ -5016,10 +5031,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f703a47015647ab439b4807ef687856a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 20
-  totalAmmo: 20
-  clipSize: 10
-  clip: 10
+  maxAmmo: 150
+  totalAmmo: 150
+  clipSize: 50
+  clip: 50
 --- !u!114 &1817896012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5035,9 +5050,9 @@ MonoBehaviour:
   bullet: {fileID: 886983983731044012, guid: ba58a5f66f51c574ca3792ea293924bc, type: 3}
   spawnPoint:
   - {fileID: 1251054484}
-  damage: 2
+  damage: 15
   accuracyOffSet: 0
-  shootDelay: 1
+  shootDelay: 0.3
   reloadDelay: 2
   fallTime: 1
   ammoText: {fileID: 0}
@@ -5395,7 +5410,7 @@ MonoBehaviour:
   - {fileID: 428351561}
   - {fileID: 2100371461}
   - {fileID: 2049194856}
-  damage: 3
+  damage: 15
   accuracyOffSet: 0
   shootDelay: 1
   reloadDelay: 2
@@ -6020,7 +6035,7 @@ MonoBehaviour:
   bullet: {fileID: 886983983731044012, guid: ba58a5f66f51c574ca3792ea293924bc, type: 3}
   spawnPoint:
   - {fileID: 967635573}
-  damage: 10
+  damage: 75
   accuracyOffSet: 0
   shootDelay: 1
   reloadDelay: 2

@@ -55,7 +55,7 @@ public class Pistol : MonoBehaviour
                         {
                         GameObject newBullet = Instantiate(bullet, point.transform.position, new Quaternion((float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100 + gameObject.transform.rotation.x, gameObject.transform.rotation.y + (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100, gameObject.transform.rotation.z, gameObject.transform.rotation.w));
                         newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * fltBulletSpeed;
-                        newBullet.GetComponent<PaperBallScript>().StartPaper(1, 5, gameObject.transform, fallTime);
+                        newBullet.GetComponent<PaperBallScript>().StartPaper(1, damage, gameObject.transform, fallTime);
                         newBullet.GetComponent<PaperBallScript>().blnShotByPlayer = true;
                         }
 
