@@ -5,6 +5,7 @@ using UnityEngine;
 public class WatchScript : MonoBehaviour
 {
     public GameObject watch;
+    public GameObject arrow;
     weaponPicker weaponPicker;
     // Start is called before the first frame update
     void Start()
@@ -19,10 +20,12 @@ public class WatchScript : MonoBehaviour
         {
             watch.SetActive(true);
             weaponPicker.DisableWeapons();
+            arrow.SetActive(!arrow.activeSelf);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha1))
         {
             watch.SetActive(false);
+            arrow.SetActive(true);
         }
     }
 }
