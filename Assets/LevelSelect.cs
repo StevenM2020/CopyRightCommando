@@ -16,14 +16,15 @@ public class LevelSelect : MonoBehaviour
     public List<Sprite> missionImages = new List<Sprite>();
     public RawImage terminalRawImage;
     private string currentCommand;
-    private Dictionary<string, string> commands = new Dictionary<string, string> { 
+    private Dictionary<string, string> commands = new Dictionary<string, string> {
         { "HELP", "shows commands" },
-        { "START", "starts the game" }, 
+        { "START", "starts the game" },
         { "AE", "selects the mission AE" },
         { "SONI", "selects the mission Soni" },
         { "NINTENERD", "selects the mission Nintenerd" },
         { "BISNEY", "selects the mission Bisney" },
-        { "ARMORY HINT", "might help you get into the armory" } };
+        { "ARMORY HINT", "might help you get into the armory" },
+        { "DEMO", "Play demo scene" }};
     private bool gun = false;
     private int levelSelected = 0;
     private bool terminalOn = false;
@@ -84,6 +85,10 @@ public class LevelSelect : MonoBehaviour
                                     // sent to BISNEY
                                     SceneManager.LoadScene("Bisney01");
                                     break;
+                                case 5:
+                                    //sent to DEMO
+                                    SceneManager.LoadScene("Demo1");
+                                    break;
                                 default:
                                     toTerminal("No mission selected", 1);
                                     break;
@@ -116,6 +121,10 @@ public class LevelSelect : MonoBehaviour
                         break;
                     case "armory hint":
                         toTerminal("Use the key pad at the end of the hall", 1);
+                        break;
+                    case "demo":
+                        toTerminal("Demo Mission selected", 1);
+                        SelectLevel(5);
                         break;
                     default:
                         toTerminal("Command not found", 1);
