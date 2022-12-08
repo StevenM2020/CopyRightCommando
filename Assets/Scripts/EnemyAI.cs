@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -33,7 +34,9 @@ public class EnemyAI : MonoBehaviour
     private bool shot = false;
     public int accuracyOffSet = 10;
     public float health = 100;
+    private float maxHealth;
 
+    public GameObject healthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +45,7 @@ public class EnemyAI : MonoBehaviour
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         fov = GetComponent<FieldOfView>();
         player = GameObject.Find("Player");
- 
+        maxHealth = health;
     }
 
     // Update is called once per frame
@@ -111,6 +114,7 @@ public class EnemyAI : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        healthBar.transform.LookAt(player.transform.position);
     }
     
     public void attackMode() // set the enemy to attack state
@@ -169,7 +173,7 @@ public class EnemyAI : MonoBehaviour
         //}
         enemyManager.alertEnemies(floor);
         health -= bulletDamage;
-        
+        healthBar.GetComponent<Slider>().value = health / maxHealth;
     }
 
     private IEnumerator shoot() // fire a bullet where enemy is looking
@@ -190,6 +194,7 @@ public class EnemyAI : MonoBehaviour
     public void DamageEnemy(float damage) 
     {
         health -= damage;
+        healthBar.GetComponent<Slider>().value = health / maxHealth;
     }
     public void isAlert()
     {

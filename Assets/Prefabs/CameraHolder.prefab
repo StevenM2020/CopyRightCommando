@@ -4129,10 +4129,11 @@ MonoBehaviour:
   bullet: {fileID: 886983983731044012, guid: ba58a5f66f51c574ca3792ea293924bc, type: 3}
   spawnPoint:
   - {fileID: 2036049325}
-  damage: 0
+  damage: 3
   accuracyOffSet: 0
   shootDelay: 0.5
   reloadDelay: 2
+  fallTime: 1
   ammoText: {fileID: 0}
 --- !u!114 &1754064054
 MonoBehaviour:
@@ -4683,10 +4684,11 @@ MonoBehaviour:
   bullet: {fileID: 886983983731044012, guid: ba58a5f66f51c574ca3792ea293924bc, type: 3}
   spawnPoint:
   - {fileID: 98517411}
-  damage: 0
+  damage: 5
   accuracyOffSet: 0
   shootDelay: 1
   reloadDelay: 2
+  fallTime: 1
   ammoText: {fileID: 0}
 --- !u!114 &1049414393
 MonoBehaviour:
@@ -5033,10 +5035,11 @@ MonoBehaviour:
   bullet: {fileID: 886983983731044012, guid: ba58a5f66f51c574ca3792ea293924bc, type: 3}
   spawnPoint:
   - {fileID: 1251054484}
-  damage: 0
+  damage: 2
   accuracyOffSet: 0
   shootDelay: 1
   reloadDelay: 2
+  fallTime: 1
   ammoText: {fileID: 0}
 --- !u!1001 &1594235181
 PrefabInstance:
@@ -5392,10 +5395,11 @@ MonoBehaviour:
   - {fileID: 428351561}
   - {fileID: 2100371461}
   - {fileID: 2049194856}
-  damage: 0
+  damage: 3
   accuracyOffSet: 0
   shootDelay: 1
   reloadDelay: 2
+  fallTime: 1
   ammoText: {fileID: 0}
 --- !u!1001 &1699152464
 PrefabInstance:
@@ -6016,10 +6020,11 @@ MonoBehaviour:
   bullet: {fileID: 886983983731044012, guid: ba58a5f66f51c574ca3792ea293924bc, type: 3}
   spawnPoint:
   - {fileID: 967635573}
-  damage: 0
+  damage: 10
   accuracyOffSet: 0
   shootDelay: 1
   reloadDelay: 2
+  fallTime: 1
   ammoText: {fileID: 0}
 --- !u!114 &1631290248
 MonoBehaviour:
