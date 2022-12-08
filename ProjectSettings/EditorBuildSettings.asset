@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StevenDevScene/BisneyBossCutScene.unity
+    guid: 67e8a1534b94432438d4e88a5ba19667
+  - enabled: 1
+    path: Assets/Scenes/StevenDevScene/BisneyBoss.unity
+    guid: 5809abf74f2b78447bd3703864e461c0
+  - enabled: 1
+    path: Assets/Scenes/Demo1.unity
+    guid: 8f0e6f94709fa814ca8362acda547a95
+  - enabled: 1
     path: Assets/Scenes/Menu Scene.unity
     guid: 85d65382267fc2342a5ff2894cef988a
   - enabled: 1
@@ -23,10 +32,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinLoseScreens/Win Screen.unity
     guid: a79db903b83d2cc4f98615e656e46039
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StevenDevScene/ElevatorTestScene1.unity
     guid: b2761ff2850dc43458fa07cb5bfc6ea5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StevenDevScene/ElevatorTestScene2.unity
     guid: 7f929a2d8e87bb2449ed22f193373461
+  - enabled: 1
+    path: Assets/Scenes/Bisney/Bisney01.unity
+    guid: b7b23035f4786bc46bfacb9427326d2d
+  - enabled: 1
+    path: Assets/Scenes/Bisney/Bisney02.unity
+    guid: f6c3b6328c7a17b43b5d2cf61a8097dc
   m_configObjects: {}

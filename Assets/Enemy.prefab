@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8440886213582307956}
   - component: {fileID: 8100476671095119271}
   - component: {fileID: 7957167636485698837}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8752050065928821249}
   - component: {fileID: 4277664503995953783}
   - component: {fileID: 1828584687521738282}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 5789875952804380875}
   - component: {fileID: 5789875952804380876}
   - component: {fileID: 5789875952804380886}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -338,6 +338,7 @@ MonoBehaviour:
   playerShootSpeed: 1
   bullet: {fileID: 366474411791980234, guid: 53cf79239dd5d5449856d378162b2a19, type: 3}
   gun: {fileID: 2690976590105060768}
+  damage: 0
   shootDelay: 0.2
   accuracyOffSet: 10
   health: 100

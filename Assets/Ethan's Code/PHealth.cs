@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PHealth : MonoBehaviour
 {
     public int maxHealth = 100;
-    public float currentHealth;
+    public float currentHealth = 100;
 
     public HealthBar healthBar;
     public HealthBar healthBar2;
@@ -21,9 +21,15 @@ public class PHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log("health1 " + currentHealth);
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         healthBar2.SetHealth(currentHealth);
+        Debug.Log("health2 " + currentHealth);
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene("Lose Screen");
+        }
     }
    
 

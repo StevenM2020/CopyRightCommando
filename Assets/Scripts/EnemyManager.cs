@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    private int floors = 1;
+    public int floors = 3;
     private float stopAttackTime = 10;
     private float[] countDown;
     private bool[] enemiesAttacking;
@@ -46,6 +46,7 @@ public class EnemyManager : MonoBehaviour
     // tells all enemies on the same floor to attack and sets a the timer
     public void alertEnemies(int floor)
     {
+        Debug.Log(floor);
         if (!enemiesAttacking[floor])
         {
             enemiesAttacking[floor] = true;

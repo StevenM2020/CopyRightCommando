@@ -1,8 +1,44 @@
 fileFormatVersion: 2
-guid: c49165ce53cb4b346b11ae5de1400af2
+guid: c167db9fc4252a448bb0036c9fe61cd0
 ModelImporter:
   serializedVersion: 21100
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -5252816984213320552
+    second: idle
+  - first:
+      74: 3598022693780249927
+    second: Human FPS|ArmAction
+  - first:
+      74: -5814580644124270643
+    second: Human FPS|ArmAction.001
+  - first:
+      74: -6389792534294199537
+    second: Human FPS|Fire.Main
+  - first:
+      74: -2253604097510493432
+    second: Human FPS|reload
+  - first:
+      74: -6810416971797634737
+    second: Human FPS|Reload.Arms
+  - first:
+      74: -4882977693137507643
+    second: Armature|ArmAction
+  - first:
+      74: 7135251115903295878
+    second: Armature|ArmAction.001
+  - first:
+      74: -1422011007694221501
+    second: Armature|ArmatureAction.001
+  - first:
+      74: -1978303741906493279
+    second: Armature|idle
+  - first:
+      74: -1631546600439298249
+    second: Armature|reload
+  - first:
+      74: 3359977476176954472
+    second: Armature|Reload.gun
   externalObjects: {}
   materials:
     materialImportMode: 2

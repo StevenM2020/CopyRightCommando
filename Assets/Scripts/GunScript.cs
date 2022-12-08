@@ -17,7 +17,7 @@ public class GunScript : MonoBehaviour
     public int numOfBullets = 10;
 
     private float tmrShoot;
-    private float fltBulletSpeed = 100;
+    private float fltBulletSpeed = 10;
     private int numOfBulletsLeft;
     //private GameObject ammoText;
     public TextMeshProUGUI ammoText;
@@ -45,8 +45,8 @@ public class GunScript : MonoBehaviour
                     {
                         GameObject newBullet = Instantiate(bullet, gameObject.transform.position, new Quaternion((float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100 + gameObject.transform.rotation.x, gameObject.transform.rotation.y + (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100, gameObject.transform.rotation.z, gameObject.transform.rotation.w));
                         newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * fltBulletSpeed;
-                        newBullet.GetComponent<TestBullet>().damage = damage;
-                        newBullet.GetComponent<TestBullet>().blnShotByPlayer = true;
+                        newBullet.GetComponent<PaperBallScript>().StartPaper(1, 5, gameObject.transform);
+                        newBullet.GetComponent<PaperBallScript>().blnShotByPlayer = true;
                         numOfBulletsLeft--;
                     }
                     tmrShoot = shootDelay;

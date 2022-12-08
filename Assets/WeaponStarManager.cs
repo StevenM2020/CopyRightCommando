@@ -7,11 +7,12 @@ public class WeaponStarManager : MonoBehaviour
 {
     public GameObject[] displays;
     private int numGun;
-    private int gun1, gun2;
+    private int gun1 = 0, 
+                gun2 = 0;
     // Start is called before the first frame update
     void Start()
     {
-        int stars = 11;
+        int stars = 15;
         int next = 0;
         while (stars > 0)
         {
@@ -49,5 +50,11 @@ public class WeaponStarManager : MonoBehaviour
     public int GetNumGunsSelected()
     {
         return numGun;
+    }
+    public void updateGuns()
+    {
+        Debug.Log(gun1 + " " + gun2);
+        GameManager.instance.SetWeapon1(gun1);
+        GameManager.instance.SetWeapon2(gun2);
     }
 }
