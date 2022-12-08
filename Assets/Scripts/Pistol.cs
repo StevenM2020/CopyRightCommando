@@ -11,6 +11,7 @@ public class Pistol : MonoBehaviour
     public int accuracyOffSet;
     public float shootDelay;
     public float reloadDelay = 2;
+    public float fallTime = 1;
     //public int numOfBullets = 10;
     //public int totalBullets = 20;
     //public int maxBullets = 20;
@@ -54,7 +55,7 @@ public class Pistol : MonoBehaviour
                         {
                         GameObject newBullet = Instantiate(bullet, point.transform.position, new Quaternion((float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100 + gameObject.transform.rotation.x, gameObject.transform.rotation.y + (float)rnd.Next(-accuracyOffSet, accuracyOffSet) / 100, gameObject.transform.rotation.z, gameObject.transform.rotation.w));
                         newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * fltBulletSpeed;
-                        newBullet.GetComponent<PaperBallScript>().StartPaper(1, 5, gameObject.transform);
+                        newBullet.GetComponent<PaperBallScript>().StartPaper(1, 5, gameObject.transform, fallTime);
                         newBullet.GetComponent<PaperBallScript>().blnShotByPlayer = true;
                         }
 

@@ -17,13 +17,14 @@ public class PaperBallScript : MonoBehaviour
     {
         return paperBalls.Length;
     }
-    public void StartPaper(int intBall, float newDamage, Transform newStartTrans)
+    public void StartPaper(int intBall, float newDamage, Transform newStartTrans, float fallTime)
     {
         ball = Instantiate(paperBalls[intBall], transform.position, transform.rotation);
         ball.transform.parent = transform;
         ball.transform.localScale= new Vector3 (scale, scale, scale);
         damage = newDamage;
         startTrans = newStartTrans;
+        StartCoroutine(fall(fallTime));
     }
 
 
@@ -43,38 +44,38 @@ public class PaperBallScript : MonoBehaviour
             if (collision.CompareTag("Enemy"))
             {
                 collision.gameObject.GetComponent<EnemyAI>().Damage(damage);
-                if (blnShotByPlayer)
-                {
+                //if (blnShotByPlayer)
+                //{
                     GameObject hit = Instantiate(hitMarker);
                     hit.transform.parent = GameObject.Find("InteractImage").transform;
                     hit.transform.position = GameObject.Find("InteractImage").transform.position;
                     spawnPaper(collision.gameObject);
                     hit.GetComponent<DestroySelf>().DestroyObject(.2f);
-                }
+                //}
             }
             else if (collision.name == "BlueSuitFree01")
             {
                 collision.gameObject.GetComponent<Boss1>().Damage(damage);
-                if (blnShotByPlayer)
-                {
+                //if (blnShotByPlayer)
+                //{
                     GameObject hit = Instantiate(hitMarker);
                     hit.transform.parent = GameObject.Find("InteractImage").transform;
                     hit.transform.position = GameObject.Find("InteractImage").transform.position;
                     spawnPaper(collision.gameObject);
                     hit.GetComponent<DestroySelf>().DestroyObject(.2f);
-                }
+                //}
             }
             else if (collision.name == "BisneyBoss")
             {
                 collision.gameObject.GetComponent<BisneyBoss>().TakeDamage(damage);
-                if (blnShotByPlayer)
-                {
+                //if (blnShotByPlayer)
+                //{
                     GameObject hit = Instantiate(hitMarker);
                     hit.transform.parent = GameObject.Find("InteractImage").transform;
                     hit.transform.position = GameObject.Find("InteractImage").transform.position;
                     spawnPaper(collision.gameObject);
                     hit.GetComponent<DestroySelf>().DestroyObject(.2f);
-                }
+                //}
             }
             else if (collision.name != "Player")
             {
@@ -116,5 +117,11 @@ public class PaperBallScript : MonoBehaviour
     {
         Destroy(gameObject, .01f);
         return damage;
+    }
+    IEnumerator fall(float fallTime)
+    {
+
+            yield return new WaitForSeconds(fallTime);
+        GetComponent<Rigidbody>().useGravity = true;
     }
 }
