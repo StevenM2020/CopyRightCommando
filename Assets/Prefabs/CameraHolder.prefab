@@ -5031,10 +5031,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f703a47015647ab439b4807ef687856a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 20
-  totalAmmo: 20
-  clipSize: 10
-  clip: 10
+  maxAmmo: 150
+  totalAmmo: 150
+  clipSize: 50
+  clip: 50
 --- !u!114 &1817896012
 MonoBehaviour:
   m_ObjectHideFlags: 0

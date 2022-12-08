@@ -1841,7 +1841,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360996759}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1.6102931
@@ -4205,6 +4205,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 583951920, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133341845, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1650361006, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -4215,7 +4223,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 475867962118106346, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680220175924728812, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_text
+      value: 'Mission:
+
+        Defeat EA'
       objectReference: {fileID: 0}
     - target: {fileID: 5680220176148557947, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4339,7 +4353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465208795335291566, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}

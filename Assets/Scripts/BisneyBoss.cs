@@ -18,7 +18,7 @@ public class BisneyBoss : MonoBehaviour
     
     enum BossState { normal, run, follow, chargeJump, middle };
     BossState bossState = BossState.run;
-    private float health = 100;
+    public float health = 333;
     private FieldOfView fov;
     private GameObject player;
     private float lookSpeed = 200;

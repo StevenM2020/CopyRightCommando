@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bisney/Bisney02.unity
     guid: f6c3b6328c7a17b43b5d2cf61a8097dc
+  - enabled: 1
+    path: Assets/Scenes/AESport.unity
+    guid: ebccd74d401e250419cb5b9ae9cca3d9
   m_configObjects: {}

@@ -70,8 +70,8 @@ public class LevelSelect : MonoBehaviour
                                 case 1:
                                     // sent to AE
                                     //SceneManager.LoadScene("Andy Dev Zone");
-                                    //SceneManager.LoadScene(3);
-                                    toTerminal("AE does not have a scene selected", 1);
+                                    SceneManager.LoadScene("AESport");
+                                    //toTerminal("AE does not have a scene selected", 1);
                                     break;
                                 case 2:
                                     // sent to SONI
