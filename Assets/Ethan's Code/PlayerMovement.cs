@@ -109,8 +109,11 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
+        
 
         moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
+
+      
     }
 
     void Jump()
@@ -156,6 +159,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Acceleration);
         }
+        
     }
 
     void Sprint()

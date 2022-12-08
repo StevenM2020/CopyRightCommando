@@ -14,6 +14,8 @@ public class HealthPack : MonoBehaviour
     public void Heal()
     {
         player.currentHealth = player.maxHealth;
+        player.healthBar.SetHealth(player.currentHealth);
+        player.healthBar2.SetHealth(player.currentHealth);
         Debug.Log("Heal");
         Destroy(this.gameObject);
     }
