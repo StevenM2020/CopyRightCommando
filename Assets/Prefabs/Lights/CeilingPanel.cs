@@ -18,15 +18,15 @@ public class CeilingPanel : MonoBehaviour
     void Start()
     {
         int counter = 0;
-        for (int i = 0; i < spawnX; i++)
+        for (int i = 0; i <Mathf.Abs(spawnX); i++)
         {
-            for (int j = 0; j < spawnZ; j++)
+            for (int j = 0; j < Mathf.Abs(spawnZ); j++)
             {
                 GameObject newTile = Instantiate(tile);
                 newTile.transform.parent = transform;
-                newTile.transform.position = new Vector3(gameObject.transform.position.x + i * xMoveBy,
+                newTile.transform.position = new Vector3(gameObject.transform.position.x + i * xMoveBy * Mathf.Sign(spawnX),
                                                         gameObject.transform.position.y,
-                                                        gameObject.transform.position.z + j * yMoveBy);
+                                                        gameObject.transform.position.z + j * yMoveBy * Mathf.Sign(spawnX));
                 if (counter == panelPerLight)
                 {
                     newTile.transform.parent = gameObject.transform;
