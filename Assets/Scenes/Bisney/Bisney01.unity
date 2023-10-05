@@ -2047,9 +2047,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 583951919, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650361005, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 475867962118106346, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24.500977
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535371435878901982, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535371435878901982, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535371435878901982, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 235.27344
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535371435878901982, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 117.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535371435878901982, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -65.96277
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680220175924728812, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_text
+      value: 'Mission:
+
+        Find the elevator'
+      objectReference: {fileID: 0}
     - target: {fileID: 5680220176346011571, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680220176346011571, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5680220176346011575, guid: 3b0442edf36031a45b972a66b444ee9b, type: 3}
       propertyPath: m_Pivot.x

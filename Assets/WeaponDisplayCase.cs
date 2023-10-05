@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,9 @@ public class WeaponDisplayCase : MonoBehaviour
         {
             blnIsActive = true;
             screen.GetComponent<Renderer>().material = MatYellow;
+            Debug.Log("color change");
         }
+        Debug.Log("color end");
     }
     public bool IsActive()
     {

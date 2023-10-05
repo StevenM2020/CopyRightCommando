@@ -48,7 +48,7 @@ public class Interactor : MonoBehaviour
             if(interactImage.sprite != defaultIcon)
             {
                 interactImage.sprite = defaultIcon;
-                Debug.Log("default");
+                //Debug.Log("default");
             }
         }
     }
